@@ -2,4 +2,5 @@
 <resources>
     <string name="hello">Hello World, WordFinderActivity!</string>
     <string name="app_name">WordFinder</string>
+    <string name="about">\nWordFinder\n\n\nCreated By:\n\n    Bryan Malyn\n    John Mooring\n    Christopher Buck\n\n\n\nCS 2114 Fall 2011 Group Project</string>
 </resources>
