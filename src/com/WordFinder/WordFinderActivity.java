@@ -26,7 +26,8 @@ public class WordFinderActivity extends Activity {
 
     /**
      * Constructs the context menu
-     * @returns boolean TODO what does boolean do?
+     *
+     * @returns boolean true to show menu
      */
     public boolean onCreateOptionsMenu(Menu menu) {
 	menu.add(0, 0, 0, "About");
@@ -35,7 +36,9 @@ public class WordFinderActivity extends Activity {
 
     /**
      * Called when a menu item is selected
-     * @returns boolean TODO what does boolean do?
+     *
+     * @returns boolean false to continue normal processing of event, true to
+     *          consume it here
      */
     public boolean onOptionsItemSelected(MenuItem i) {
 	switch (i.getItemId()) {
