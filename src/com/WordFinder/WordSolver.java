@@ -7,7 +7,7 @@ import java.util.Vector;
  *  Solves LetterGrids, checks to see if a found word is valid.
  *
  *  @author John Mooring (jmooring)
- *  @version Nov 8, 2011
+ *  @version 2011.11.8
  */
 public class WordSolver {
     private WordSolver instance;
@@ -32,6 +32,16 @@ public class WordSolver {
     public Vector<String> solve(LetterGrid grid){
 	//TODO
 	return null;
+    }
+
+    /**
+     * Checks to see if the dictionary contains the passed word
+     * @param word the word to check
+     * @returns whether or not the word is a word
+     */
+    public boolean isWord(String word) {
+	//TODO
+	return false;
     }
 
     /**
