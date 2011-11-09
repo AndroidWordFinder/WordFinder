@@ -35,10 +35,18 @@ public class Tile {
 	return character;
     }
 
+    /**
+     * Sets the state of the tile
+     * @param s state to set this tile to
+     */
     public void setState(State s) {
 	state = s;
     }
 
+    /**
+     * Gets the state of the tile
+     * @returns the state of the tile
+     */
     public State getState() {
 	return state;
     }
@@ -52,6 +60,9 @@ public class Tile {
 	return adjacentChar[letter - 'a'];
     }
 
+    /**
+     * Adds an adjacent tile
+     */
     public void addAdjascent(Tile tile) {
 	adjacentChar[tile.getLetter()-'a']=true;
 	adjascentTiles.add(tile);
