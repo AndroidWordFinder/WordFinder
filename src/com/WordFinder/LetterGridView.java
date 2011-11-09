@@ -1,7 +1,7 @@
 package com.WordFinder;
 
+import android.graphics.Rect;
 import android.graphics.BitmapFactory;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -25,6 +25,10 @@ public class LetterGridView
 {
 
     private LetterGrid model;
+    private Bitmap     upButton;
+    private Bitmap     downButton;
+    private Bitmap     badButton;
+    private Bitmap     goodButton;
 
 
     // ----------------------------------------------------------
@@ -40,8 +44,22 @@ public class LetterGridView
     {
         super(context, attrs);
 
-
-        Bitmap b = BitmapFactory.decodeResource(context.getResources(), R.drawable.button_down);
+        upButton =
+            BitmapFactory.decodeResource(
+                context.getResources(),
+                R.drawable.button_up);
+        downButton =
+            BitmapFactory.decodeResource(
+                context.getResources(),
+                R.drawable.button_down);
+        badButton =
+            BitmapFactory.decodeResource(
+                context.getResources(),
+                R.drawable.button_good);
+        goodButton =
+            BitmapFactory.decodeResource(
+                context.getResources(),
+                R.drawable.button_bad);
     }
 
 
@@ -58,32 +76,46 @@ public class LetterGridView
     }
 
 
-    public void onDraw(Canvas c) {
+    public void onDraw(Canvas c)
+    {
         Paint paint = new Paint();
         for (int x = 0; x < model.size(); x++)
         {
             for (int y = 0; y < model.size(); y++)
             {
+
+                Rect drawArea =
+                    new Rect(
+                        convertToCanvasSize(x),
+                        convertToCanvasSize(y),
+                        convertToCanvasSize(x + 1) - 1,
+                        convertToCanvasSize(y + 1) - 1);
+                Bitmap toDraw = null;
                 switch (model.getTile(x, y).getState())
                 {
                     case UP:
+                        toDraw = upButton;
                         break;
                     case DOWN:
+                        toDraw = downButton;
                         break;
                     case GOOD:
+                        toDraw = goodButton;
                         break;
                     case BAD:
+                        toDraw = badButton;
                         break;
                 }
-
-                c.drawBitmap(b,0,0,paint);
-                //This is the domain
-                //convertToCanvasSize(x),
-                //convertToCanvasSize(y),
-                //convertToCanvasSize(x + 1) - 1,
-                //convertToCanvasSize(y + 1) - 1,
-
+                c.drawBitmap(toDraw, null, drawArea, paint);
+                c.drawText(
+                    model.getTile(x, y).getLetter() + "",
+                    convertToCanvasSize(x),
+                    convertToCanvasSize(y),
+                    convertToCanvasSize(x + 1) - 1,
+                    convertToCanvasSize(y + 1) - 1,
+                    paint);
             }
+        }
     }
 
 
@@ -94,9 +126,9 @@ public class LetterGridView
      *            to be converted
      * @return float the converted number
      */
-    private float convertToCanvasSize(int cellNumber)
+    private int convertToCanvasSize(int cellNumber)
     {
-        return cellNumber * getWidth() / maze.size();
+        return cellNumber * getWidth() / model.size();
     }
 
 
@@ -109,7 +141,7 @@ public class LetterGridView
      */
     private int convertToCellNumber(float canvasSize)
     {
-        return (int)(canvasSize / (double)getWidth() * maze.size());
+        return (int)(canvasSize / (double)getWidth() * model.size());
     }
 
 
