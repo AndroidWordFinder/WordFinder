@@ -62,7 +62,7 @@ public class LetterGridView
         {
             for (int y = 0; y < model.size(); y++)
             {
-                switch (model.getCell(x, y))
+                switch (model.getTile(x, y).getState())
                 {
                     case UP:
                         break;
