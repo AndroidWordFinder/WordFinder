@@ -1,11 +1,13 @@
 package com.WordFinder;
 
+import java.util.Vector;
+
 
 public class LetterGrid {
-    private Letter[][] grid;
+    private Tile[][] grid;
 
     public LetterGrid(char[][] grid) {
-	this.grid = new Letter[grid.length][grid[0].length];
+	this.grid = new Tile[grid.length][grid[0].length];
 	for (int i = 0; i < grid.length; i++) {
 	    for (int j = 0; j < grid[i].length; j++) {
 		boolean[] adjacent = new boolean[26];
@@ -17,9 +19,18 @@ public class LetterGrid {
 			}
 		    }
 		}
-		this.grid[i][j] = new Letter(grid[i][j], adjacent);
+		this.grid[i][j] = new Tile(grid[i][j], adjacent);
 	    }
 	}
+    }
+
+    public void setSelected(int x, int y) {
+	//TODO
+    }
+
+    public Vector<Tile> getPath() {
+	//TODO
+	return null;
     }
 
 

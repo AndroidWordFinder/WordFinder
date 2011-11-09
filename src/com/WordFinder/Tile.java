@@ -8,7 +8,7 @@ package com.WordFinder;
  *  @author John Mooring (jmooring)
  *  @version Oct 30, 2011
  */
-public class Letter {
+public class Tile {
     private char character;
     private boolean[] adjacent = new boolean[26];
 
@@ -17,7 +17,7 @@ public class Letter {
      * @param letter character in the cell
      * @param adjacent an array of all adjacent characters
      */
-    public Letter(char letter, boolean[] adjacent) {
+    public Tile(char letter, boolean[] adjacent) {
 	character = letter;
 	this.adjacent = adjacent;
     }
