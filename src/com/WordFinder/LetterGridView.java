@@ -9,8 +9,7 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
 
-/*
- * // -------------------------------------------------------------------------
+ // -------------------------------------------------------------------------
 /**
  *  Character Grid
  *
@@ -24,11 +23,11 @@ public class LetterGridView extends View implements Observer{
     }
 
     public void onDraw(Canvas c) {
-	
+
     }
 
     public void update(Observable observable, Object data) {
 	// TODO Auto-generated method stub
-	
+
     }
 }

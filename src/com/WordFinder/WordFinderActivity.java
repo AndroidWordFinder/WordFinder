@@ -6,8 +6,7 @@ import android.view.MenuItem;
 import android.app.Activity;
 import android.os.Bundle;
 
-/*
- * // -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
  /**
  *  Main application activity.
  *

@@ -1,7 +1,6 @@
 package com.WordFinder;
 
-/*
- * // -------------------------------------------------------------------------
+ // -------------------------------------------------------------------------
  /**
  *  Contains the letter in a grid cell, along with
  *  a table of all adjacent letters.
