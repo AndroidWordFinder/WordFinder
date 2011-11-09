@@ -1,15 +1,15 @@
 package com.WordFinder;
 
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import java.util.Observable;
-import java.util.Observer;
+import android.graphics.BitmapFactory;
+
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
-import static com.WordFinder.Tile.State.*;
+import java.util.Observable;
+import java.util.Observer;
 
 // -------------------------------------------------------------------------
 /**
@@ -27,7 +27,6 @@ public class LetterGridView
     private LetterGrid model;
 
 
-
     // ----------------------------------------------------------
     /**
      * Create a new LetterGridView object.
@@ -40,6 +39,9 @@ public class LetterGridView
     public LetterGridView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
+
+
+        Bitmap b = BitmapFactory.decodeResource(context.getResources(), R.drawable.button_down);
     }
 
 
@@ -62,7 +64,7 @@ public class LetterGridView
         {
             for (int y = 0; y < model.size(); y++)
             {
-                switch (model.getCell(x, y))
+                switch (model.getTile(x, y).getState())
                 {
                     case UP:
                         break;
@@ -74,6 +76,7 @@ public class LetterGridView
                         break;
                 }
 
+                c.drawBitmap(b,0,0,paint);
                 //This is the domain
                 //convertToCanvasSize(x),
                 //convertToCanvasSize(y),
