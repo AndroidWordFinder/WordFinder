@@ -7,20 +7,23 @@ import java.util.Vector;
 public class LetterGrid extends Observable{
     private Tile[][] grid;
 
-    public LetterGrid(char[][] grid) {
-	this.grid = new Tile[grid.length][grid[0].length];
-	for (int i = 0; i < grid.length; i++) {
-	    for (int j = 0; j < grid[i].length; j++) {
-		boolean[] adjacent = new boolean[26];
+    public LetterGrid(char[][] letters) {
+	this.grid = new Tile[letters.length][letters[0].length];
+	for (int i = 0; i < letters.length; i++) {
+	    for (int j = 0; j < letters[i].length; j++) {
+		this.grid[i][j] = new Tile(letters[i][j]);
+	    }
+	}
+	for (int i = 0; i < letters.length; i++) {
+	    for (int j = 0; j < letters[i].length; j++) {
 		for (int di = i - 1; di <= i + 1; di++) {
 		    for (int dj = j - 1; dj <= j + 1; dj++) {
-			if (di >= 0 && di < grid.length && dj >= 0
-				&& dj < grid[i].length && !(di == i && dj == j)) {
-			    adjacent[grid[di][dj] - 'a'] = true;
+			if (di >= 0 && di < letters.length && dj >= 0
+				&& dj < letters[i].length && !(di == i && dj == j)) {
+			    grid[i][j].addAdjascent(grid[di][dj]);
 			}
 		    }
 		}
-		this.grid[i][j] = new Tile(grid[i][j], adjacent);
 	    }
 	}
     }
@@ -36,6 +39,9 @@ public class LetterGrid extends Observable{
 	//TODO
     }
 
+    /**
+     * Returns the currently selected path
+     */
     public Vector<Tile> getPath() {
 	//TODO
 	return null;
@@ -51,6 +57,10 @@ public class LetterGrid extends Observable{
      */
     public void submitWord() {
 	//TODO
+    }
+
+    public Tile getTile(int x, int y) {
+	return grid[x][y];
     }
 
     /**
