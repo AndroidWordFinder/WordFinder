@@ -1,5 +1,6 @@
 package com.WordFinder;
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Vector;
 
@@ -7,10 +8,16 @@ public class LetterGrid
     extends Observable
 {
     private Tile[][] grid;
+    private ArrayList<Tile> path;
 
-
+    /**
+     * Builds a LetterGrid from the passed array of letters
+     * Characters are transformed into Tiles, and the tiles are
+     * given an array of all adjascent tiles.
+     */
     public LetterGrid(char[][] letters)
     {
+	path = new ArrayList<Tile>();
         this.grid = new Tile[letters.length][letters[0].length];
         for (int i = 0; i < letters.length; i++)
         {
