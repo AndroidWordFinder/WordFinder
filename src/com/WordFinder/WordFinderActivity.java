@@ -7,31 +7,41 @@ import android.app.Activity;
 import android.os.Bundle;
 
 // -------------------------------------------------------------------------
- /**
- *  Main application activity.
+/**
+ * Main application activity.
  *
- *  @author John Mooring (jmooring)
- *  @version Oct 29, 2011
+ * @author John Mooring (jmooring)
+ * @version Oct 29, 2011
  */
-public class WordFinderActivity extends Activity {
+public class WordFinderActivity
+    extends Activity
+{
     /**
      * Called when the activity is first created.
      */
+    private static WordFinderActivity instance;
+
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
-	setContentView(R.layout.main);
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        instance = this;
     }
+
 
     /**
      * Constructs the context menu
      *
      * @returns boolean true to show menu
      */
-    public boolean onCreateOptionsMenu(Menu menu) {
-	menu.add(0, 0, 0, "About");
-	return true;
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        menu.add(0, 0, 0, "About");
+        return true;
     }
+
 
     /**
      * Called when a menu item is selected
@@ -39,12 +49,24 @@ public class WordFinderActivity extends Activity {
      * @returns boolean false to continue normal processing of event, true to
      *          consume it here
      */
-    public boolean onOptionsItemSelected(MenuItem i) {
-	switch (i.getItemId()) {
-	case 0:
-	    startActivity(new Intent(this, About.class));
-	    break;
-	}
-	return true;
+    public boolean onOptionsItemSelected(MenuItem i)
+    {
+        switch (i.getItemId())
+        {
+            case 0:
+                startActivity(new Intent(this, About.class));
+                break;
+        }
+        return true;
+    }
+
+
+    /**
+     * Returns an instance of this activity so classes can get context
+     * @return instance of this activity
+     */
+    public static WordFinderActivity getInstance()
+    {
+        return instance;
     }
 }
