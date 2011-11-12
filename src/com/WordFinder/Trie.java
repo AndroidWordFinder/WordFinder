@@ -5,14 +5,22 @@ public class Trie
     private Node top;
     private Node location;
 
-
+    /**
+     * Constructs a new Trie
+     */
     public Trie()
     {
         top = new Node();
         location = top;
     }
 
-
+    /**
+     * Adds a word to the Trie (tree thing)
+     * Each letter in the word is a node in the Trie; each letter is the parent
+     *  of the next letter.
+     * @param add The word to add to the Trie
+     * @return True if success, False if an error was encountered
+     */
     public boolean add(String add)
     {
         String charSet = "abcdefghijklmnopqrstuvwxyz{";
@@ -84,10 +92,7 @@ public class Trie
 
 
     /**
-     * // ----------------------------------------------------------------------
-     * --- /** Write a one-sentence summary of your class here. Follow it with
-     * additional details about its purpose, what abstraction it represents, and
-     * how to use it.
+     * Node class for storing data in the Trie
      *
      * @author John Mooring (jmooring)
      * @author Bryan Malyn (bmalyn)
