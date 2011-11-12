@@ -43,19 +43,29 @@ public class Trie
         return true;
     }
 
+    /**
+     * Checks to see if the current node has the passed char in a branch
+     *
+     * @param c the character that is checked for existence in the current
+     *      node's branches
+     * @return whether or not the current node in the Trie has the specified
+     *      char in a branch
+     */
+    public boolean hasNext(char c)
+    {
+        boolean ret;
+        ret = location.branchContains(c);
+        return ret;
+    }
 
     /**
-     * Checks to see if the current node has the passed char in a branch NOTE:
      * Changes the state of the Trie Advances the current location to the branch
      * containing the passed char, if that branch exists.
      *
-     * @param c
-     *            the character that is checked for existance in the current
-     *            node's branches
-     * @return whether or not the current node in the Trie has the passed char
-     *         in a branch
+     * @param c The next character that the node will point to
+     * @return whether or not the current node in the Trie has changed
      */
-    public boolean hasNext(char c)
+    public boolean gotoNext(char c)
     {
         Node n = location.getNode(c);
         if (n != null)
@@ -71,10 +81,13 @@ public class Trie
 
 
     /**
-     * Place a description of your method here.
+     * Determines if the set of letters from the top of the trie down to the
+     *      current Node is a (full) word.
+     * This is indicated by the existance of a '{' character Node as one of the
+     *      children of the current Node.
      *
      * @return whether or not the current location in the trie is at the
-     *         termination of a complete word
+     *      termination of a complete word
      */
     public boolean isWord()
     {
