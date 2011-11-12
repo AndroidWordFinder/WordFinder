@@ -10,7 +10,7 @@ public class Trie
      */
     public Trie()
     {
-        top = new Node();
+        top = new Node(null);
         location = top;
     }
 
@@ -114,24 +114,9 @@ public class Trie
     {
         private Node[] branch;
         private Node   parent;
-        private char   letter;
 
-
-        public Node()
+        public Node(Node parent)
         {
-            this('\0');
-        }
-
-
-        public Node(char c)
-        {
-            this(c, null);
-        }
-
-
-        public Node(char c, Node parent)
-        {
-            letter = c;
             branch = new Node[27];
             this.parent = parent;
         }
@@ -147,7 +132,7 @@ public class Trie
         {
             if (!branchContains(c))
             {
-                branch[c - 'a'] = new Node(c, this);
+                branch[c - 'a'] = new Node(this);
             }
             return getNode(c);
         }
