@@ -15,7 +15,7 @@ public class Trie
     }
 
     /**
-     * Adds a word to the Trie (tree thing)
+     * Adds a word to the Trie (prefix tree)
      * Each letter in the word is a node in the Trie; each letter is the parent
      *  of the next letter.
      * @param add The word to add to the Trie
@@ -53,9 +53,7 @@ public class Trie
      */
     public boolean hasNext(char c)
     {
-        boolean ret;
-        ret = location.branchContains(c);
-        return ret;
+        return location.branchContains(c);
     }
 
     /**
