@@ -20,13 +20,19 @@ public class WordFinderActivity
      * Called when the activity is first created.
      */
     private static WordFinderActivity instance;
-
+    private LetterGrid grid;
+    private LetterGridView board;
+    private final int GRID_SIZE = 4;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        board = (LetterGridView)findViewById(R.id.letterGrid);
+        grid = new LetterGrid();
+        grid.loadRandom(GRID_SIZE);
+        board.setModel(grid);
         instance = this;
     }
 

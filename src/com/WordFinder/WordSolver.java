@@ -25,13 +25,20 @@ public class WordSolver {
     }
 
     /**
+     * Clears all found words from the list
+     */
+    public void clearWords() {
+	foundWords.clear();
+    }
+
+    /**
      * Loads the dictionary into a prefix tree
      */
     public void loadDictionary() {
 	Context c = WordFinderActivity.getInstance(); // will need context to
 						      // load from assets
-	// TODO
-	// Add all words contained in assets/en.dict to the Trie
+	//TODO
+	throw new UnsupportedOperationException("not yet implemented");
     }
 
     /**
@@ -91,10 +98,13 @@ public class WordSolver {
      * @return whether or not the word is a word
      */
     public boolean isWord(String word) {
-	// TODO
-	return false;
+	//TODO
+	throw new UnsupportedOperationException("not yet implemented");
     }
 
+    /**
+     * Returns an arraylist of all words found on the grid
+     */
     public ArrayList<String> getWords() {
 	return foundWords;
     }

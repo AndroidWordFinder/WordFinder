@@ -6,12 +6,17 @@ import com.WordFinder.WordSolver;
 public class WordSolverTest extends student.TestCase{
     private WordSolver solver;
     private LetterGrid grid;
+
     public void setUp() {
 	solver = WordSolver.getInstance();
 	char[][]cgrid = {{'a','n'},
 			{'c','d'}};
-	grid = new LetterGrid(cgrid);
+	grid = new LetterGrid();
+	grid.load(cgrid);
+
     }
+    //TODO Add javadocs, more and better tests
+
     public void testSolve() {
 	solver.addWord("and");
 	solver.addWord("can");

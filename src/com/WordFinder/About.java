@@ -12,8 +12,7 @@ import android.os.Bundle;
  *  @author John Mooring (jmooring)
  *  @version Oct 29, 2011
  */
-class About extends Activity {
-    @Override
+public class About extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about);
