@@ -27,16 +27,16 @@ public class LetterGrid
                 this.grid[i][j] = new Tile(i, j, letters[i][j]);
             }
         }
-        for (int i = 0; i < letters.length; i++)
+        for (int i = 0; i < grid.length; i++)
         {
-            for (int j = 0; j < letters[i].length; j++)
+            for (int j = 0; j < grid[i].length; j++)
             {
                 for (int di = i - 1; di <= i + 1; di++)
                 {
                     for (int dj = j - 1; dj <= j + 1; dj++)
                     {
-                        if (di >= 0 && di < letters.length && dj >= 0
-                            && dj < letters[i].length && !(di == i && dj == j))
+                        if (di >= 0 && di < grid.length && dj >= 0
+                            && dj < grid[i].length && !(di == i && dj == j))
                         {
                             grid[i][j].addAdjascent(grid[di][dj]);
                         }

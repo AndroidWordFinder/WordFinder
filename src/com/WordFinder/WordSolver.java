@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @version 2011.11.8
  */
 public class WordSolver {
-    private WordSolver instance;
+    private static WordSolver instance;
     private ArrayList<String> foundWords;
     private Trie dictionary;
     private final int MAX_DEPTH = 10;
@@ -20,7 +20,6 @@ public class WordSolver {
      * Singleton constructor
      */
     private WordSolver() {
-	loadDictionary();
 	dictionary = new Trie();
 	foundWords = new ArrayList<String>();
     }
@@ -28,12 +27,21 @@ public class WordSolver {
     /**
      * Loads the dictionary into a prefix tree
      */
-    private void loadDictionary() {
+    public void loadDictionary() {
 	Context c = WordFinderActivity.getInstance(); // will need context to
 						      // load from assets
-
 	// TODO
 	// Add all words contained in assets/en.dict to the Trie
+    }
+
+    /**
+     * Adds a single word to the dictionary.
+     *
+     * @param word
+     *            the word to add to the dictionary
+     */
+    public void addWord(String word) {
+	dictionary.add(word);
     }
 
     /**
@@ -54,13 +62,12 @@ public class WordSolver {
      */
     private void solve(Tile tile, String current, boolean[][] visited, int depth) {
 	String word = current + tile.getLetter();
-	visited[tile.getX()][tile.getY()] = true;
-	boolean hadNext = dictionary.hasNext(tile.getLetter());
-	if (hadNext) { // Path plus current tile is not in the dictionary.
+	if (dictionary.hasNext(tile.getLetter())) {
 	    dictionary.gotoNext(tile.getLetter());
-	}else {
+	} else {
 	    return;
 	}
+	visited[tile.getX()][tile.getY()] = true;
 	if (dictionary.isWord()) {
 	    foundWords.add(word);
 	}
@@ -74,7 +81,6 @@ public class WordSolver {
 	}
 	visited[tile.getX()][tile.getY()] = false;
 	dictionary.pop();
-
     }
 
     /**
@@ -89,10 +95,14 @@ public class WordSolver {
 	return false;
     }
 
+    public ArrayList<String> getWords() {
+	return foundWords;
+    }
+
     /**
      * Returns an instance of this class
      */
-    public WordSolver getSolver() {
+    public static WordSolver getInstance() {
 	if (instance == null) {
 	    instance = new WordSolver();
 	}
