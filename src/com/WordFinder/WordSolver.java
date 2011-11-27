@@ -1,5 +1,6 @@
 package com.WordFinder;
 
+import java.io.IOException;
 import android.content.Context;
 import java.util.ArrayList;
 
@@ -40,12 +41,21 @@ public class WordSolver
     /**
      * Loads the dictionary into a prefix tree
      */
-    private void loadDictionary()
+    public void loadDictionary()
     {
-        Context c = WordFinderActivity.getInstance(); // will need context to
-        // load from assets
-        // TODO
-        throw new UnsupportedOperationException("not yet implemented");
+        try
+        {
+            byte[] b = null;
+            WordFinderActivity.getInstance().getAssets().open("en.dict").read(b);
+            for(String word : new String(b).split("\n")) {
+                addWord(word);
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -67,7 +77,6 @@ public class WordSolver
     public ArrayList<String> solve(LetterGrid grid)
     {
         clearWords();
-        loadDictionary();
         for (int i = 0; i < grid.size(); i++)
         {
             for (int j = 0; j < grid.size(); j++)
@@ -127,8 +136,7 @@ public class WordSolver
      */
     public boolean isWord(String word)
     {
-        // TODO
-        throw new UnsupportedOperationException("not yet implemented");
+        return foundWords.contains(word);
     }
 
 
