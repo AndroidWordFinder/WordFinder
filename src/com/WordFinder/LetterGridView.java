@@ -146,7 +146,7 @@ public class LetterGridView
     private int[] convertToCellNumber(float x, float y)
     {
         int[] toReturn = null;
-        float diameter = model.size() / (float)getWidth();
+        float diameter = getWidth() / (float) model.size() ;
         float radius = diameter / 2;
         float scaledX = x % diameter;
         float scaledY = y % diameter;
