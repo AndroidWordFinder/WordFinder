@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import java.util.Observable;
 import java.util.Observer;
+import static java.lang.Math.*;
 
 // -------------------------------------------------------------------------
 /**
@@ -19,13 +20,17 @@ import java.util.Observer;
  * @author Bryan Malyn (bmalyn)
  * @version Oct 30, 2011
  */
-public class LetterGridView extends View implements Observer {
+public class LetterGridView
+    extends View
+    implements Observer
+{
 
     private LetterGrid model;
-    private Bitmap upButton;
-    private Bitmap downButton;
-    private Bitmap badButton;
-    private Bitmap goodButton;
+    private Bitmap     upButton;
+    private Bitmap     downButton;
+    private Bitmap     badButton;
+    private Bitmap     goodButton;
+
 
     // ----------------------------------------------------------
     /**
@@ -36,18 +41,28 @@ public class LetterGridView extends View implements Observer {
      * @param attrs
      *            the xml attributes of the view.
      */
-    public LetterGridView(Context context, AttributeSet attrs) {
-	super(context, attrs);
+    public LetterGridView(Context context, AttributeSet attrs)
+    {
+        super(context, attrs);
 
-	upButton = BitmapFactory.decodeResource(context.getResources(),
-		R.drawable.button_up);
-	downButton = BitmapFactory.decodeResource(context.getResources(),
-		R.drawable.button_down);
-	badButton = BitmapFactory.decodeResource(context.getResources(),
-		R.drawable.button_good);
-	goodButton = BitmapFactory.decodeResource(context.getResources(),
-		R.drawable.button_bad);
+        upButton =
+            BitmapFactory.decodeResource(
+                context.getResources(),
+                R.drawable.button_up);
+        downButton =
+            BitmapFactory.decodeResource(
+                context.getResources(),
+                R.drawable.button_down);
+        badButton =
+            BitmapFactory.decodeResource(
+                context.getResources(),
+                R.drawable.button_good);
+        goodButton =
+            BitmapFactory.decodeResource(
+                context.getResources(),
+                R.drawable.button_bad);
     }
+
 
     // ----------------------------------------------------------
     /**
@@ -55,45 +70,58 @@ public class LetterGridView extends View implements Observer {
      *
      * @param model
      */
-    public void setModel(LetterGrid model) {
-	model.addObserver(this);
-	this.model = model;
+    public void setModel(LetterGrid model)
+    {
+        model.addObserver(this);
+        this.model = model;
     }
 
-    public void onDraw(Canvas c) {
-	if (model != null) {
-	    Paint paint = new Paint();
-	    for (int x = 0; x < model.size(); x++) {
-		for (int y = 0; y < model.size(); y++) {
 
-		    Rect drawArea = new Rect(convertToCanvasSize(x),
-			    convertToCanvasSize(y),
-			    convertToCanvasSize(x + 1) - 1,
-			    convertToCanvasSize(y + 1) - 1);
-		    Bitmap toDraw = null;
-		    switch (model.getTile(x, y).getState()) {
-		    case UP:
-			toDraw = upButton;
-			break;
-		    case DOWN:
-			toDraw = downButton;
-			break;
-		    case GOOD:
-			toDraw = goodButton;
-			break;
-		    case BAD:
-			toDraw = badButton;
-			break;
-		    }
-		    c.drawBitmap(toDraw, null, drawArea, paint);
-		    c.drawText(model.getTile(x, y).getLetter() + "",
-			    convertToCanvasSize(x), convertToCanvasSize(y),
-			    convertToCanvasSize(x + 1) - 1,
-			    convertToCanvasSize(y + 1) - 1, paint);
-		}
-	    }
-	}
+    public void onDraw(Canvas c)
+    {
+        if (model != null)
+        {
+            Paint paint = new Paint();
+            for (int x = 0; x < model.size(); x++)
+            {
+                for (int y = 0; y < model.size(); y++)
+                {
+
+                    Rect drawArea =
+                        new Rect(
+                            convertToCanvasSize(x),
+                            convertToCanvasSize(y),
+                            convertToCanvasSize(x + 1) - 1,
+                            convertToCanvasSize(y + 1) - 1);
+                    Bitmap toDraw = null;
+                    switch (model.getTile(x, y).getState())
+                    {
+                        case UP:
+                            toDraw = upButton;
+                            break;
+                        case DOWN:
+                            toDraw = downButton;
+                            break;
+                        case GOOD:
+                            toDraw = goodButton;
+                            break;
+                        case BAD:
+                            toDraw = badButton;
+                            break;
+                    }
+                    c.drawBitmap(toDraw, null, drawArea, paint);
+                    c.drawText(
+                        model.getTile(x, y).getLetter() + "",
+                        convertToCanvasSize(x),
+                        convertToCanvasSize(y),
+                        convertToCanvasSize(x + 1) - 1,
+                        convertToCanvasSize(y + 1) - 1,
+                        paint);
+                }
+            }
+        }
     }
+
 
     /**
      * Convert cell number to pixel size.
@@ -102,9 +130,11 @@ public class LetterGridView extends View implements Observer {
      *            to be converted
      * @return float the converted number
      */
-    private int convertToCanvasSize(int cellNumber) {
-	return cellNumber * getWidth() / model.size();
+    private int convertToCanvasSize(int cellNumber)
+    {
+        return cellNumber * getWidth() / model.size();
     }
+
 
     /**
      * Convert pixel size to cell number.
@@ -113,9 +143,26 @@ public class LetterGridView extends View implements Observer {
      *            the converted number
      * @return int to be converted
      */
-    private int convertToCellNumber(float canvasSize) {
-	return (int) (canvasSize / (double) getWidth() * model.size());
+    private int[] convertToCellNumber(float x, float y)
+    {
+        int[] toReturn = null;
+        float diameter = model.size() / (float)getWidth();
+        float radius = diameter / 2;
+        float scaledX = x % diameter;
+        float scaledY = y % diameter;
+
+        if (pow(radius - scaledX, 2) + pow(radius - scaledY, 2) <= pow(
+            radius,
+            2))
+        {
+            toReturn = new int[2];
+            toReturn[0] = (int)(x / diameter);
+            toReturn[1] = (int)(y / diameter);
+        }
+        return toReturn;
+
     }
+
 
     // ----------------------------------------------------------
     /**
@@ -128,19 +175,22 @@ public class LetterGridView extends View implements Observer {
      *            the desired height as determined by the layout
      */
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-	// Choose the smallest of the two dimensions to use for both.
-	int measureSpec = Math.min(widthMeasureSpec, heightMeasureSpec);
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
+    {
+        // Choose the smallest of the two dimensions to use for both.
+        int measureSpec = Math.min(widthMeasureSpec, heightMeasureSpec);
 
-	// Call the superclass implementation but pass it our modified width
-	// and height instead of the incoming ones.
-	super.onMeasure(measureSpec, measureSpec);
+        // Call the superclass implementation but pass it our modified width
+        // and height instead of the incoming ones.
+        super.onMeasure(measureSpec, measureSpec);
     }
+
 
     /**
      * When the model changes redraw the view
      */
-    public void update(Observable observable, Object data) {
-	postInvalidate();
+    public void update(Observable observable, Object data)
+    {
+        postInvalidate();
     }
 }
