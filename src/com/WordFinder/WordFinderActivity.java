@@ -34,6 +34,8 @@ public class WordFinderActivity
         grid.loadRandom(GRID_SIZE);
         board.setModel(grid);
         instance = this;
+        WordSolver.getInstance().loadDictionary();
+
     }
 
 
