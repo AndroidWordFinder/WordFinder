@@ -107,7 +107,7 @@ public class LetterGrid
      * If the tile is valid, (based on the last selected tile) the tile is added
      * to the current path list and has its state changed to DOWN
      */
-    public void setSelected(int x, int y)
+    public void setSelected(Tile tile)
     {
         /* if( is valid tile) */
         setChanged();

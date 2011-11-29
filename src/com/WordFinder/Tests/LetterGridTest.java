@@ -32,9 +32,9 @@ public class LetterGridTest extends TestCase {
 
     public void testSetSelected() {
 	grid.load(generateGrid("ab", "cd"));
-	grid.setSelected(0, 0);
-	grid.setSelected(1, 0);
-	grid.setSelected(0, 1);
+	//grid.setSelected(0, 0);
+	//grid.setSelected(1, 0);
+	//grid.setSelected(0, 1);
 	assertTilesString("abc",grid.getPath());
 
     }
