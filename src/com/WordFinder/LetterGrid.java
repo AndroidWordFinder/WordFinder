@@ -104,7 +104,6 @@ public class LetterGrid extends Observable {
 	public ArrayList<Tile> getPath() {
 		return path;
 	}
-
 	/**
 	 * Called when tile selection is done and the word is submitted. Uses
 	 * WordSolver to check if the word contained in the current path is valid
