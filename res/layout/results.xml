@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<TextView android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="Points" />
+	<LinearLayout android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:id="@+id/linearLayout1">
+		<SlidingDrawer android:layout_width="match_parent"
+			android:id="@+id/slidingDrawer1" android:layout_height="match_parent"
+			android:handle="@+id/handle" android:content="@+id/content">
+			<Button android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:text="Handle"
+				android:id="@+id/handle"></Button>
+			<LinearLayout android:id="@+id/content"
+				android:layout_width="match_parent" android:layout_height="match_parent">
+			</LinearLayout>
+		</SlidingDrawer>
+		<SlidingDrawer android:layout_width="match_parent"
+			android:id="@+id/slidingDrawer2" android:layout_height="match_parent"
+			android:handle="@+id/handle" android:content="@+id/content">
+			<Button android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:text="Handle"
+				android:id="@+id/handle"></Button>
+			<LinearLayout android:id="@+id/content"
+				android:layout_width="match_parent" android:layout_height="match_parent"></LinearLayout>
+		</SlidingDrawer>
+	</LinearLayout>
+
+	<LinearLayout android:layout_height="match_parent"
+		android:layout_width="wrap_content" android:id="@+id/linearLayout2">
+		<Button android:text="Button" android:id="@+id/button1"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+		<Button android:text="Button" android:id="@+id/button2"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+
+	</LinearLayout>
+
+</LinearLayout>
