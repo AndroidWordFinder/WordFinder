@@ -142,16 +142,13 @@ public class LetterGridView
         if (e.getAction() == MotionEvent.ACTION_DOWN
             || e.getAction() == MotionEvent.ACTION_MOVE)
         {
-            float scaleFactor = getWidth() / (float)model.size();
             int scaledX =
-                (int)(e.getX() % scaleFactor / convertToCanvasSize(1));
+                (int)(e.getX() % convertToCanvasSize(1) / convertToCanvasSize(1));
             int scaledY =
-                (int)(e.getY() % scaleFactor / convertToCanvasSize(1));
+                (int)(e.getY() % convertToCanvasSize(1) / convertToCanvasSize(1));
             if (Color.alpha(upButton.getPixel(scaledX, scaledY)) > 128)
             {
-                model
-                    .setSelected(convertToTile(
-                        e.getX(), e.getY(), scaleFactor));
+                model.setSelected(convertToTile(e.getX(), e.getY()));
             }
             return true;
         }
@@ -183,9 +180,11 @@ public class LetterGridView
      *            the converted number
      * @return int to be converted
      */
-    private Tile convertToTile(float x, float y, float diameter)
+    private Tile convertToTile(float x, float y)
     {
-        return model.getTile((int)(x / diameter), (int)(y / diameter));
+        return model.getTile(
+            (int)(x / convertToCanvasSize(1)),
+            (int)(y / convertToCanvasSize(1)));
     }
 
 
