@@ -31,8 +31,8 @@ public class WordFinderActivity
         setContentView(R.layout.main);
         board = (LetterGridView)findViewById(R.id.letterGrid);
         grid = new LetterGrid();
-        //grid.loadRandom(GRID_SIZE);
-        //board.setModel(grid);
+        grid.loadRandom(GRID_SIZE);
+        board.setModel(grid);
         instance = this;
     }
 
