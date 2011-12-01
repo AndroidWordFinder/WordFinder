@@ -141,7 +141,7 @@ public class WordSolver
 
 
     /**
-     * Returns an arraylist of all words found on the grid
+     * Returns an arraylist of all words the user has found on the grid
      */
     public ArrayList<String> getWords()
     {

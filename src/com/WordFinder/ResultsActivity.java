@@ -16,12 +16,12 @@ import android.widget.TextView;
 public class ResultsActivity extends Activity
 {
     //Data model
-    private LetterGrid letterGrid;
+    private WordSolver wordSolver;
 
     //GUI components
     TextView points;
-    ListView left;
-    ListView right;
+    ListView left;  //found words
+    ListView right; //all possible words
     Button titleScreen;
     Button playAgain;
 
@@ -46,12 +46,21 @@ public class ResultsActivity extends Activity
     }
 
     /**
+     * Makes the ListViews populate with words
+     */
+    public void populateListViews()
+    {
+        //set left ListView to have the list of found words
+        //set right ListView to have the list of all possible words
+    }
+
+    /**
      * Sets the Model reference for the Activity
      * @param lg The data model
      */
-    public void setModel(LetterGrid lg)
+    public void setWordSolver(WordSolver ws)
     {
-        letterGrid = lg;
+        wordSolver = ws;
     }
 
     /**
