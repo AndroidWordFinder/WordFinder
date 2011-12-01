@@ -1,5 +1,7 @@
 package com.WordFinder;
 
+import java.io.IOException;
+import android.graphics.BitmapFactory;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,6 +36,7 @@ public class WordFinderActivity
         grid.loadRandom(GRID_SIZE);
         board.setModel(grid);
         instance = this;
+        getWindow().setBackgroundDrawableResource(R.drawable.background);
         //WordSolver.getInstance().loadDictionary();
 
     }
