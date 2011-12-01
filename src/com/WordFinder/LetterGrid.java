@@ -112,14 +112,15 @@ public class LetterGrid
      */
     public void setSelected(Tile t)
     {
+        if (wordSubmitted)
+        {
+            deselectPath();
+            wordSubmitted = false;
+        }
         if (path.isEmpty()
             || path.get(path.size() - 1).getAdjascent().contains(t))
         {
-            if (wordSubmitted)
-            {
-                deselectPath();
-                wordSubmitted = false;
-            }
+
             path.add(t);
             t.setState(State.DOWN);
             setChanged();
