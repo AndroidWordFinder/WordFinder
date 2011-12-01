@@ -4,36 +4,22 @@
 	android:layout_height="fill_parent">
 
 	<TextView android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:text="Points" />
+		android:layout_height="wrap_content" android:text="Points" android:id="@+id/pointsTextView"/>
 	<LinearLayout android:layout_height="wrap_content"
 		android:layout_width="match_parent" android:id="@+id/linearLayout1">
-		<SlidingDrawer android:layout_width="match_parent"
-			android:id="@+id/slidingDrawer1" android:layout_height="match_parent"
-			android:handle="@+id/handle" android:content="@+id/content">
-			<Button android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:text="Handle"
-				android:id="@+id/handle"></Button>
-			<LinearLayout android:id="@+id/content"
-				android:layout_width="match_parent" android:layout_height="match_parent">
-			</LinearLayout>
-		</SlidingDrawer>
-		<SlidingDrawer android:layout_width="match_parent"
-			android:id="@+id/slidingDrawer2" android:layout_height="match_parent"
-			android:handle="@+id/handle" android:content="@+id/content">
-			<Button android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:text="Handle"
-				android:id="@+id/handle"></Button>
-			<LinearLayout android:id="@+id/content"
-				android:layout_width="match_parent" android:layout_height="match_parent"></LinearLayout>
-		</SlidingDrawer>
+		
+		<ListView android:id="@+id/listViewLeft" android:layout_width="200px" android:layout_height="300dp"></ListView>
+		<ListView android:id="@+id/listViewRight" android:layout_width="200px" android:layout_height="300dp"></ListView>
+
+
 	</LinearLayout>
 
 	<LinearLayout android:layout_height="match_parent"
 		android:layout_width="wrap_content" android:id="@+id/linearLayout2">
-		<Button android:text="Button" android:id="@+id/button1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
-		<Button android:text="Button" android:id="@+id/button2"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+		<Button android:text="Title Screen" android:id="@+id/titleScreenButton"
+			android:layout_height="wrap_content" android:layout_width="match_parent" android:onClick="onTitleScreenClicked"></Button>
+		<Button android:text="Play Again" android:id="@+id/playAgainButton"
+			android:layout_width="wrap_content" android:layout_height="wrap_content" android:onClick="onPlayAgainClicked"></Button>
 
 	</LinearLayout>
 

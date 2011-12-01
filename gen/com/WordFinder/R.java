@@ -19,16 +19,15 @@ public final class R {
         public static final int icon=0x7f020005;
     }
     public static final class id {
-        public static final int button1=0x7f050008;
-        public static final int button2=0x7f050009;
-        public static final int content=0x7f050005;
-        public static final int handle=0x7f050004;
         public static final int letterGrid=0x7f050001;
-        public static final int linearLayout1=0x7f050002;
-        public static final int linearLayout2=0x7f050007;
-        public static final int slidingDrawer1=0x7f050003;
-        public static final int slidingDrawer2=0x7f050006;
+        public static final int linearLayout1=0x7f050003;
+        public static final int linearLayout2=0x7f050006;
+        public static final int listViewLeft=0x7f050004;
+        public static final int listViewRight=0x7f050005;
+        public static final int playAgainButton=0x7f050008;
+        public static final int pointsTextView=0x7f050002;
         public static final int textView1=0x7f050000;
+        public static final int titleScreenButton=0x7f050007;
     }
     public static final class layout {
         public static final int about=0x7f030000;
