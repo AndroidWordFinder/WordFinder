@@ -126,6 +126,12 @@ public class LetterGrid
             setChanged();
             notifyObservers();
         }
+        else if (path.get(path.size() - 1).equals(t)) {
+            path.remove(path.size() - 1);
+            t.setState(State.UP);
+            setChanged();
+            notifyObservers();
+        }
 
     }
 

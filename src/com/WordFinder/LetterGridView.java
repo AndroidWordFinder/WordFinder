@@ -33,6 +33,8 @@ public class LetterGridView
     private Bitmap     badButton;
     private Bitmap     goodButton;
     private boolean    beenDraging;
+    private boolean onTile;
+    private boolean wasOnTile;
 
 
     // ----------------------------------------------------------
@@ -65,6 +67,8 @@ public class LetterGridView
                 context.getResources(),
                 R.drawable.button_good);
         beenDraging = false;
+        onTile = false;
+        wasOnTile = false;
     }
 
 
@@ -150,12 +154,14 @@ public class LetterGridView
             int scaledY =
                 (int)((e.getY() % convertToCanvasSize(1) / convertToCanvasSize(1)) * upButton
                     .getWidth());
+            onTile = Color.alpha(upButton.getPixel(scaledX, scaledY)) > 128;
             Log.d("WordFinder", "scaled" + scaledX);
-            if (Color.alpha(upButton.getPixel(scaledX, scaledY)) > 128)
+            if (onTile && !wasOnTile)
             {
                 model.setSelected(convertToTile(e.getX(), e.getY()));
             }
             beenDraging = e.getAction() == MotionEvent.ACTION_MOVE;
+            wasOnTile = onTile;
             return true;
         }
         else if (e.getAction() == MotionEvent.ACTION_UP)
@@ -164,6 +170,8 @@ public class LetterGridView
                 model.submitWord();
             }
             beenDraging = false;
+            onTile = false;
+            wasOnTile = false;
             return true;
         }
         else
