@@ -1,7 +1,9 @@
 package com.WordFinder;
 
+
 import java.util.ArrayList;
 import java.util.Observable;
+
 import com.WordFinder.Tile.State;
 
 public class LetterGrid

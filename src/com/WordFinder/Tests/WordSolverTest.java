@@ -4,31 +4,36 @@ import com.WordFinder.LetterGrid;
 import com.WordFinder.WordSolver;
 
 public class WordSolverTest extends student.TestCase{
-    private WordSolver solver;
-    private LetterGrid grid;
+
 
     public void setUp() {
-	solver = WordSolver.getInstance();
-	char[][]cgrid = {{'a','n'},
-			{'c','d'}};
-	grid = new LetterGrid();
-	grid.load(cgrid);
+	
 
     }
-    //TODO Add javadocs, more and better tests
+    //TODO Appears to load dictionary incorrectly from test environment.
 
     public void testSolve() {
-	solver.addWord("and");
-	solver.addWord("can");
-	solver.addWord("cad");
-	solver.addWord("andd");
-	solver.addWord("aand");
-	solver.addWord("acca");
-	solver.addWord("dada");
-	solver.addWord("daca");
-	solver.addWord("ncad");
-	solver.solve(grid);
-	assertEquals(4,solver.getWords().size());
+    	WordSolver solver = WordSolver.getInstance();
+		LetterGrid grid = new LetterGrid();
+		char[][]cgrid = {{'a','n'},
+				{'c','d'}};
+		grid.load(cgrid);
+		assertEquals(ltos(solver.dictionary[1000]),"test");
+		assertTrue(solver.dictionary.length>100000);
+		assertEquals(solver.solve(grid).size(),10);
 
     }
+    public static String ltos(long l) {
+		StringBuffer stb = new StringBuffer();
+		int x = 0;
+		byte n;
+		while ((l & 31) == 0&&x++<=12) {
+			l >>>= 5;
+		}
+		while ((n = (byte) (l & 31)) != 0) {
+			stb.insert(0, (char) ('a' + n - 1));
+			l >>>= 5;
+		}
+		return stb.toString();
+	}
 }
