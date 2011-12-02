@@ -34,14 +34,7 @@ public class WordFinderActivity
         setContentView(R.layout.main);
         board = (LetterGridView)findViewById(R.id.letterGrid);
         grid = new LetterGrid();
-        try
-        {
-            grid.loadRandom(Integer.parseInt(getIntent().getDataString()));
-        }
-        catch (Exception e)
-        {
-            grid.loadRandom(GRID_SIZE);
-        }
+        grid.loadRandom(getIntent().getIntExtra("size", GRID_SIZE));
         board.setModel(grid);
         instance = this;
         getWindow().setBackgroundDrawableResource(R.drawable.background);
