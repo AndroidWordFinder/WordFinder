@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<TextView android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:text="WordFinder"
+		android:id="@+id/title" android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
+		
+	<LinearLayout android:layout_height="wrap_content"
+		android:id="@+id/linearLayout1" android:layout_width="match_parent">
+		
+		<Button android:text="4x4" android:id="@+id/start4x4Button"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+		<Button android:text="Solo" android:id="@+id/soloButton"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+
+	</LinearLayout>
+
+	<LinearLayout android:layout_height="wrap_content"
+		android:id="@+id/linearLayout2" android:layout_width="match_parent">
+		<Button android:text="5x5" android:id="@+id/start5x5Button"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+		<Button android:text="Dummy Button" android:id="@+id/button4"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+	</LinearLayout>
+
+	<LinearLayout android:layout_height="wrap_content"
+		android:id="@+id/linearLayout3" android:layout_width="match_parent">
+		<Button android:text="About" android:id="@+id/aboutButton"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+		<Button android:text="Instructions" android:id="@+id/instructionsButton"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+	</LinearLayout>
+
+
+</LinearLayout>
