@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  *  Activity for the Results Screen
@@ -19,6 +20,7 @@ public class ResultsActivity extends Activity
 {
     //Data model
     private WordSolver wordSolver;
+    private LetterGrid letterGrid;
 
     //GUI components
     TextView points;
@@ -53,25 +55,34 @@ public class ResultsActivity extends Activity
     public void populateListViews()
     {
         ArrayList<String> possibleWords = wordSolver.getWords();
-        ArrayList<String> foundWords = null; //TODO: get found words
+        Set<String> foundWords = letterGrid.getFoundWords(); //TODO: get found words
 
         //set left ListView to have the list of found words
         ArrayAdapter leftAdapter = new ArrayAdapter<String>(this,
-            R.id.listViewLeft, foundWords);
+            R.id.listViewLeft, (String[])foundWords.toArray());
 
 
         //set right ListView to have the list of all possible words
         ArrayAdapter rightAdapter = new ArrayAdapter<String>(this,
-            R.id.listViewRight, possibleWords);
+            R.id.listViewRight, (String[])possibleWords.toArray());
     }
 
     /**
-     * Sets the Model reference for the Activity
-     * @param lg The data model
+     * Sets the WordSolver reference for the Activity
+     * @param ws The WordSolver model
      */
     public void setWordSolver(WordSolver ws)
     {
         wordSolver = ws;
+    }
+
+    /**
+     * Sets the LetterGrid reference for the Activity
+     * @param lg The LetterGrid model
+     */
+    public void setLetterGrid(LetterGrid lg)
+    {
+        letterGrid = lg;
     }
 
     /**
