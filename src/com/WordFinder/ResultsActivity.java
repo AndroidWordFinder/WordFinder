@@ -1,11 +1,13 @@
 package com.WordFinder;
 
-import android.view.View;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import java.util.ArrayList;
 
 /**
  *  Activity for the Results Screen
@@ -50,8 +52,17 @@ public class ResultsActivity extends Activity
      */
     public void populateListViews()
     {
+        ArrayList<String> possibleWords = wordSolver.getWords();
+        ArrayList<String> foundWords = null; //TODO: get found words
+
         //set left ListView to have the list of found words
+        ArrayAdapter leftAdapter = new ArrayAdapter<String>(this,
+            R.id.listViewLeft, foundWords);
+
+
         //set right ListView to have the list of all possible words
+        ArrayAdapter rightAdapter = new ArrayAdapter<String>(this,
+            R.id.listViewRight, possibleWords);
     }
 
     /**
