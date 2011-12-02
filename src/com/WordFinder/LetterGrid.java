@@ -1,5 +1,7 @@
 package com.WordFinder;
 
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.Observable;
 import com.WordFinder.Tile.State;
@@ -10,6 +12,7 @@ public class LetterGrid
 
     private Tile[][]        grid;
     private ArrayList<Tile> path;
+    private TreeSet<String> foundWords;
     private boolean         wordSubmitted;
 
 
@@ -126,15 +129,23 @@ public class LetterGrid
             setChanged();
             notifyObservers();
         }
-        else if (path.get(path.size() - 1).equals(t)) {
-            path.remove(path.size() - 1);
+        else if (path.size() >= 2 && path.get(path.size() - 2).equals(t)) {
             t.setState(State.UP);
+            path.remove(path.size() - 1);
             setChanged();
             notifyObservers();
         }
 
     }
 
+
+    /**
+     * Returns the words found by the user.
+     */
+    public Set<String> getFoundWords() {
+        return foundWords;
+
+    }
 
     /**
      * Returns the currently selected path
@@ -174,12 +185,20 @@ public class LetterGrid
                 t.setState(State.BAD);
             }
         }
+        foundWords.add(s);
         wordSubmitted = true;
         setChanged();
         notifyObservers();
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param x
+     * @param y
+     * @return
+     */
     public Tile getTile(int x, int y)
     {
         return grid[x][y];
