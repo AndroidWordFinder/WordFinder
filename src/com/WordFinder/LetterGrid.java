@@ -1,5 +1,6 @@
 package com.WordFinder;
 
+import android.util.Log;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.ArrayList;
@@ -122,22 +123,28 @@ public class LetterGrid
             wordSubmitted = false;
         }
         if (path.isEmpty()
-            || path.get(path.size() - 1).getAdjascent().contains(t))
+            || (path.get(path.size() - 1).getAdjascent().contains(t) && !path
+                .contains(t)))
         {
-
             path.add(t);
             t.setState(State.DOWN);
             setChanged();
             notifyObservers();
+
         }
         else if (path.size() >= 2 && path.get(path.size() - 2).equals(t))
         {
-            t.setState(State.UP);
+
+            path.get(path.size() - 1).setState(State.UP);
             path.remove(path.size() - 1);
             setChanged();
             notifyObservers();
+            String pathString = "";
+            for (Tile t2: path) {
+                pathString += t2.getLetter() +"";
+            }
+             Log.d("error", pathString);
         }
-
     }
 
 

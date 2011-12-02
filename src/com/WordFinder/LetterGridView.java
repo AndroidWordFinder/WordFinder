@@ -200,8 +200,8 @@ public class LetterGridView
     private Tile convertToTile(float x, float y)
     {
         return model.getTile(
-            (int)(x / convertToCanvasSize(1)),
-            (int)(y / convertToCanvasSize(1)));
+            (int)(Math.min(x / convertToCanvasSize(1),model.size()-1)),
+            (int)(Math.min(y / convertToCanvasSize(1),model.size()-1)));
     }
 
 
