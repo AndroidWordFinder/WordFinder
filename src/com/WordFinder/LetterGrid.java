@@ -1,6 +1,9 @@
 package com.WordFinder;
 
 
+import android.util.Log;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -12,6 +15,7 @@ public class LetterGrid
 
     private Tile[][]        grid;
     private ArrayList<Tile> path;
+    private TreeSet<String> foundWords;
     private boolean         wordSubmitted;
 
 
@@ -22,6 +26,7 @@ public class LetterGrid
     {
         path = new ArrayList<Tile>();
         wordSubmitted = false;
+        foundWords = new TreeSet<String>();
     }
 
 
@@ -120,20 +125,37 @@ public class LetterGrid
             wordSubmitted = false;
         }
         if (path.isEmpty()
-            || path.get(path.size() - 1).getAdjascent().contains(t))
+            || (path.get(path.size() - 1).getAdjascent().contains(t) && !path
+                .contains(t)))
         {
-
             path.add(t);
             t.setState(State.DOWN);
             setChanged();
             notifyObservers();
+
         }
-        else if (path.get(path.size() - 1).equals(t)) {
+        else if (path.size() >= 2 && path.get(path.size() - 2).equals(t))
+        {
+
+            path.get(path.size() - 1).setState(State.UP);
             path.remove(path.size() - 1);
-            t.setState(State.UP);
             setChanged();
             notifyObservers();
+            String pathString = "";
+            for (Tile t2: path) {
+                pathString += t2.getLetter() +"";
+            }
+             Log.d("error", pathString);
         }
+    }
+
+
+    /**
+     * Returns the words found by the user.
+     */
+    public Set<String> getFoundWords()
+    {
+        return foundWords;
 
     }
 
@@ -162,8 +184,10 @@ public class LetterGrid
         {
             s += t.getLetter();
         }
+
         if (WordSolver.getInstance().isWord(s))
         {
+            foundWords.add(s);
             for (Tile t : path)
             {
                 t.setState(State.GOOD);
@@ -182,6 +206,14 @@ public class LetterGrid
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public Tile getTile(int x, int y)
     {
         return grid[x][y];

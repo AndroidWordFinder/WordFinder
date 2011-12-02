@@ -143,13 +143,16 @@ public class WordSolver {
 		return foundWords;
 	}
 
-	/**
-	 * Returns an instance of this class
-	 */
-	public static WordSolver getInstance() {
-		if (instance == null) {
-			instance = new WordSolver();
-		}
-		return instance;
-	}
+
+    /**
+     * Returns an instance of this class
+     */
+    public static WordSolver getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new WordSolver();
+        }
+        return instance;
+    }
 }

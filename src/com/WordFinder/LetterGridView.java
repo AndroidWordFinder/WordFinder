@@ -10,7 +10,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -32,9 +31,8 @@ public class LetterGridView
     private Bitmap     downButton;
     private Bitmap     badButton;
     private Bitmap     goodButton;
-    private boolean    beenDraging;
-    private boolean onTile;
-    private boolean wasOnTile;
+    private boolean    onTile;
+    private boolean    wasOnTile;
 
 
     // ----------------------------------------------------------
@@ -66,7 +64,6 @@ public class LetterGridView
             BitmapFactory.decodeResource(
                 context.getResources(),
                 R.drawable.button_good);
-        beenDraging = false;
         onTile = false;
         wasOnTile = false;
     }
@@ -144,32 +141,32 @@ public class LetterGridView
     @Override
     public boolean onTouchEvent(MotionEvent e)
     {
-        Log.d("WordFinder", "" + e.getX());
         if (e.getAction() == MotionEvent.ACTION_DOWN
             || e.getAction() == MotionEvent.ACTION_MOVE)
         {
-            int scaledX =
-                (int)((e.getX() % convertToCanvasSize(1) / convertToCanvasSize(1)) * upButton
-                    .getWidth());
-            int scaledY =
-                (int)((e.getY() % convertToCanvasSize(1) / convertToCanvasSize(1)) * upButton
-                    .getWidth());
-            onTile = Color.alpha(upButton.getPixel(scaledX, scaledY)) > 128;
-            Log.d("WordFinder", "scaled" + scaledX);
-            if (onTile && !wasOnTile)
+            if (e.getX() >= 0 && e.getX() < getWidth() && e.getY() >= 0
+                && e.getX() < getHeight())
             {
-                model.setSelected(convertToTile(e.getX(), e.getY()));
+                int scaledX =
+                    (int)((e.getX() % convertToCanvasSize(1) / convertToCanvasSize(1)) * upButton
+                        .getWidth());
+                int scaledY =
+                    (int)((e.getY() % convertToCanvasSize(1) / convertToCanvasSize(1)) * upButton
+                        .getWidth());
+                onTile = Color.alpha(upButton.getPixel(scaledX, scaledY)) > 128;
+                if (onTile && !wasOnTile)
+                {
+                    model.setSelected(convertToTile(e.getX(), e.getY()));
+                }
+                wasOnTile = onTile;
             }
-            beenDraging = e.getAction() == MotionEvent.ACTION_MOVE;
-            wasOnTile = onTile;
+
             return true;
+
         }
         else if (e.getAction() == MotionEvent.ACTION_UP)
         {
-            if (beenDraging) {
-                model.submitWord();
-            }
-            beenDraging = false;
+            model.submitWord();
             onTile = false;
             wasOnTile = false;
             return true;
@@ -185,8 +182,7 @@ public class LetterGridView
     /**
      * Convert cell number to pixel size.
      *
-     * @param cellNumber
-     *            to be converted
+     * @pa lNumber to be converted
      * @return float the converted number
      */
     private int convertToCanvasSize(int cellNumber)
@@ -198,15 +194,14 @@ public class LetterGridView
     /**
      * Convert pixel size to cell number.
      *
-     * @param canvasSize
-     *            the converted number
+     * @pa vasSize the converted number
      * @return int to be converted
      */
     private Tile convertToTile(float x, float y)
     {
         return model.getTile(
-            (int)(x / convertToCanvasSize(1)),
-            (int)(y / convertToCanvasSize(1)));
+            (int)(Math.min(x / convertToCanvasSize(1),model.size()-1)),
+            (int)(Math.min(y / convertToCanvasSize(1),model.size()-1)));
     }
 
 
@@ -215,8 +210,7 @@ public class LetterGridView
      * Overridden to force the view to be square (have the same width and
      * height).
      *
-     * @param widthMeasureSpec
-     *            the desired width as determined by the layout
+     * @pa thMeasureSpec the desired width as determined by the layout
      * @param heightMeasureSpec
      *            the desired height as determined by the layout
      */

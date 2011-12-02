@@ -1,11 +1,15 @@
 package com.WordFinder;
 
-import android.view.View;
+import android.content.Intent;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.Set;
 
 /**
  *  Activity for the Results Screen
@@ -17,6 +21,7 @@ public class ResultsActivity extends Activity
 {
     //Data model
     private WordSolver wordSolver;
+    private LetterGrid letterGrid;
 
     //GUI components
     TextView points;
@@ -50,13 +55,22 @@ public class ResultsActivity extends Activity
      */
     public void populateListViews()
     {
+        Set<String> possibleWords = wordSolver.getWords();
+        Set<String> foundWords = letterGrid.getFoundWords(); //TODO: get found words
+
         //set left ListView to have the list of found words
+        ArrayAdapter<String> leftAdapter = new ArrayAdapter<String>(this,
+            R.id.listViewLeft, (String[])foundWords.toArray());
+
+
         //set right ListView to have the list of all possible words
+        ArrayAdapter<String> rightAdapter = new ArrayAdapter<String>(this,
+            R.id.listViewRight, (String[])possibleWords.toArray());
     }
 
     /**
-     * Sets the Model reference for the Activity
-     * @param lg The data model
+     * Sets the WordSolver reference for the Activity
+     * @param ws The WordSolver model
      */
     public void setWordSolver(WordSolver ws)
     {
@@ -64,11 +78,20 @@ public class ResultsActivity extends Activity
     }
 
     /**
+     * Sets the LetterGrid reference for the Activity
+     * @param lg The LetterGrid model
+     */
+    public void setLetterGrid(LetterGrid lg)
+    {
+        letterGrid = lg;
+    }
+
+    /**
      * Does something when the titleScreen button is clicked
      */
     public void onTitleScreenClicked(View v)
     {
-        //TODO: something
+        startActivity(new Intent(this, TitleScreenActivity.class));
     }
 
     /**
