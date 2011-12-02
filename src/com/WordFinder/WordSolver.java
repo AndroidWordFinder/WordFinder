@@ -9,7 +9,7 @@ import java.util.TreeSet;
 /**
  * // -------------------------------------------------------------------------
  * /** Solves LetterGrids, checks to see if a found word is valid.
- * 
+ *
  * @author John Mooring (jmooring)
  * @version 2011.11.8
  */
@@ -71,7 +71,7 @@ public class WordSolver {
 	private void solve(Tile tile, String current, boolean[][] visited, int depth) {
 		String word = current + tile.getLetter();
 		if (!isWord(word)) {
-			
+
 		} else {
 			visited[tile.getX()][tile.getY()] = true;
 			foundWords.add(word);
@@ -89,7 +89,7 @@ public class WordSolver {
 
 	/**
 	 * Checks to see if the dictionary contains the passed word
-	 * 
+	 *
 	 * @param word
 	 *            the word to check
 	 * @return whether or not the word is a word
@@ -103,10 +103,10 @@ public class WordSolver {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Checks to see if the dictionary could contain the passed word
-	 * 
+	 *
 	 * @param word
 	 *            the word to check
 	 * @return whether or not the word is a word
@@ -114,9 +114,9 @@ public class WordSolver {
 	public boolean couldBeWord(String word) {
 		long longWord = stringToLong(word);
 		int loc = Math.abs(Arrays.binarySearch(dictionary, longWord));
-		return (dictionary[loc]&longWord)==longWord;		
+		return (dictionary[loc]&longWord)==longWord;
 	}
-	
+
 	public long find(String word){
 		return (dictionary[Math.abs(Arrays.binarySearch(dictionary,stringToLong(word)))]);
 	}

@@ -19,8 +19,6 @@ public class TitleScreenActivity extends Activity
     TextView titleTextView;
     Button start4x4;
     Button start5x5;
-    Button solo;
-    //Button Dummy
     Button about;
     Button instructions;
 
@@ -37,7 +35,6 @@ public class TitleScreenActivity extends Activity
         titleTextView = (TextView)findViewById(R.id.title);
         start4x4 = (Button)findViewById(R.id.start4x4Button);
         start5x5 = (Button)findViewById(R.id.start5x5Button);
-        solo = (Button)findViewById(R.id.soloButton);
         about = (Button)findViewById(R.id.aboutButton);
         instructions = (Button)findViewById(R.id.instructionsButton);
 
@@ -74,14 +71,6 @@ public class TitleScreenActivity extends Activity
         startActivity(intent);
     }
 
-    /**
-    * Handles the event when the Solo button is clicked
-    * @param v The clicked View
-    */
-    public void onSoloClicked(View v)
-    {
-
-    }
 
     /**
      * Handles the event when the About button is clicked
