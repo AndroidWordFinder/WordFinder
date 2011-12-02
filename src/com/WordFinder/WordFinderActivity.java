@@ -31,15 +31,13 @@ public class WordFinderActivity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        instance = this;
         setContentView(R.layout.main);
         board = (LetterGridView)findViewById(R.id.letterGrid);
         grid = new LetterGrid();
         grid.loadRandom(getIntent().getIntExtra("size", GRID_SIZE));
         board.setModel(grid);
-        instance = this;
         getWindow().setBackgroundDrawableResource(R.drawable.background);
-        // WordSolver.getInstance().loadDictionary();
-
     }
 
 

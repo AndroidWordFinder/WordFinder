@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 
+import android.util.Log;
+
 /**
  * // -------------------------------------------------------------------------
  * /** Solves LetterGrids, checks to see if a found word is valid.
@@ -55,6 +57,7 @@ public class WordSolver {
 	 * Solves the passed grid
 	 */
 	public TreeSet<String> solve(LetterGrid grid) {
+		long t1 = System.currentTimeMillis();
 		clearWords();
 		for (int i = 0; i < grid.size(); i++) {
 			for (int j = 0; j < grid.size(); j++) {
@@ -62,6 +65,7 @@ public class WordSolver {
 						new boolean[grid.size()][grid.size()], MAX_DEPTH);
 			}
 		}
+		Log.d("WordFinder",(System.currentTimeMillis()-t1)+" "+foundWords+" "+grid.size()+" "+dictionary[100]);
 		return foundWords;
 	}
 
@@ -70,10 +74,12 @@ public class WordSolver {
 	 */
 	private void solve(Tile tile, String current, boolean[][] visited, int depth) {
 		String word = current + tile.getLetter();
-		if (!isWord(word)) {
-			
+		if (!couldBeWord(word)) {
+			return;
 		} else {
 			visited[tile.getX()][tile.getY()] = true;
+		}
+		if(isWord(word)){
 			foundWords.add(word);
 		}
 		if (depth <= 0) {
@@ -113,8 +119,8 @@ public class WordSolver {
 	 */
 	public boolean couldBeWord(String word) {
 		long longWord = stringToLong(word);
-		int loc = Math.abs(Arrays.binarySearch(dictionary, longWord));
-		return (dictionary[loc]&longWord)==longWord;		
+		int loc = Math.min(dictionary.length-1,Math.abs(Arrays.binarySearch(dictionary, longWord)));
+		return (dictionary[loc]&longWord)==longWord;
 	}
 	
 	public long find(String word){
@@ -143,16 +149,13 @@ public class WordSolver {
 		return foundWords;
 	}
 
-
-    /**
-     * Returns an instance of this class
-     */
-    public static WordSolver getInstance()
-    {
-        if (instance == null)
-        {
-            instance = new WordSolver();
-        }
-        return instance;
-    }
+	/**
+	 * Returns an instance of this class
+	 */
+	public static WordSolver getInstance() {
+		if (instance == null) {
+			instance = new WordSolver();
+		}
+		return instance;
+	}
 }
