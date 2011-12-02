@@ -22,9 +22,10 @@ public class WordFinderActivity
      * Called when the activity is first created.
      */
     private static WordFinderActivity instance;
-    private LetterGrid grid;
-    private LetterGridView board;
-    private final int GRID_SIZE = 4;
+    private LetterGrid                grid;
+    private LetterGridView            board;
+    private final int                 GRID_SIZE = 4;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -33,11 +34,11 @@ public class WordFinderActivity
         setContentView(R.layout.main);
         board = (LetterGridView)findViewById(R.id.letterGrid);
         grid = new LetterGrid();
-        grid.loadRandom(GRID_SIZE);
+        grid.loadRandom(getIntent().getIntExtra("size", GRID_SIZE));
         board.setModel(grid);
         instance = this;
         getWindow().setBackgroundDrawableResource(R.drawable.background);
-        //WordSolver.getInstance().loadDictionary();
+        // WordSolver.getInstance().loadDictionary();
 
     }
 
@@ -74,6 +75,7 @@ public class WordFinderActivity
 
     /**
      * Returns an instance of this activity so classes can get context
+     *
      * @return instance of this activity
      */
     public static WordFinderActivity getInstance()

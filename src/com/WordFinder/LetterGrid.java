@@ -23,6 +23,7 @@ public class LetterGrid
     {
         path = new ArrayList<Tile>();
         wordSubmitted = false;
+        foundWords = new TreeSet<String>();
     }
 
 
@@ -129,7 +130,8 @@ public class LetterGrid
             setChanged();
             notifyObservers();
         }
-        else if (path.size() >= 2 && path.get(path.size() - 2).equals(t)) {
+        else if (path.size() >= 2 && path.get(path.size() - 2).equals(t))
+        {
             t.setState(State.UP);
             path.remove(path.size() - 1);
             setChanged();
@@ -142,10 +144,12 @@ public class LetterGrid
     /**
      * Returns the words found by the user.
      */
-    public Set<String> getFoundWords() {
+    public Set<String> getFoundWords()
+    {
         return foundWords;
 
     }
+
 
     /**
      * Returns the currently selected path
@@ -171,8 +175,10 @@ public class LetterGrid
         {
             s += t.getLetter();
         }
+
         if (WordSolver.getInstance().isWord(s))
         {
+            foundWords.add(s);
             for (Tile t : path)
             {
                 t.setState(State.GOOD);
@@ -185,7 +191,6 @@ public class LetterGrid
                 t.setState(State.BAD);
             }
         }
-        foundWords.add(s);
         wordSubmitted = true;
         setChanged();
         notifyObservers();
@@ -195,6 +200,7 @@ public class LetterGrid
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
+     *
      * @param x
      * @param y
      * @return
