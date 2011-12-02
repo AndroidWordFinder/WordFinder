@@ -3,10 +3,10 @@
       package="com.WordFinder"
       android:versionCode="1"
       android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="8" />
+    <uses-sdk android:minSdkVersion="10" />
     <instrumentation android:name="android.test.InstrumentationTestRunner" android:targetPackage="com.WordFinder"></instrumentation>
     <application android:icon="@drawable/icon" android:label="@string/app_name">
-        <activity android:name=".TitleScreenActivity"
+        <activity android:name=".WordFinderActivity.TitleScreenActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
