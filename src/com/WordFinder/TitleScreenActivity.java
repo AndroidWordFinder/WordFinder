@@ -69,7 +69,9 @@ public class TitleScreenActivity extends Activity
     */
     public void onStart5x5Clicked(View v)
     {
-
+        Intent intent = new Intent(this, WordFinderActivity.class);
+        intent.putExtra("size", 5);
+        startActivity(intent);
     }
 
     /**
