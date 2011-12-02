@@ -41,7 +41,7 @@ public class TitleScreenActivity extends Activity
         about = (Button)findViewById(R.id.aboutButton);
         instructions = (Button)findViewById(R.id.instructionsButton);
 
-        setContentView(R.layout.results);
+        setContentView(R.layout.title);
     }
 
     /**
@@ -58,7 +58,7 @@ public class TitleScreenActivity extends Activity
      */
     public void onStart4x4Clicked(View v)
     {
-
+        startActivity(new Intent(this, WordFinderActivity.class));
     }
 
     /**
