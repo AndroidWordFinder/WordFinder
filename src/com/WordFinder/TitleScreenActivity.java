@@ -2,6 +2,7 @@ package com.WordFinder;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -48,5 +49,50 @@ public class TitleScreenActivity extends Activity
     public void loadDictionary()
     {
         //TODO: load the dictionary
+    }
+
+    /**
+     * Handles the event when the 4x4 button is clicked
+     * @param v The clicked View
+     */
+    public void onStart4x4Clicked(View v)
+    {
+
+    }
+
+    /**
+    * Handles the event when the 5x5 button is clicked
+    * @param v The clicked View
+    */
+    public void onStart5x5Clicked(View v)
+    {
+
+    }
+
+    /**
+    * Handles the event when the Solo button is clicked
+    * @param v The clicked View
+    */
+    public void onSoloClicked(View v)
+    {
+
+    }
+
+    /**
+     * Handles the event when the About button is clicked
+     * @param v The clicked View
+     */
+    public void onAboutClicked(View v)
+    {
+
+    }
+
+    /**
+     * Handles the event when the Instructions button is clicked
+     * @param v The clicked View
+     */
+    public void onInstructionsClicked(View v)
+    {
+
     }
 }
