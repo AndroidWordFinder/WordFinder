@@ -1,5 +1,6 @@
 package com.WordFinder;
 
+import android.content.Intent;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -90,7 +91,7 @@ public class ResultsActivity extends Activity
      */
     public void onTitleScreenClicked(View v)
     {
-        //TODO: something
+        startActivity(new Intent(this, TitleScreenActivity.class));
     }
 
     /**
