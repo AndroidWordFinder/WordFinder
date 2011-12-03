@@ -28,8 +28,9 @@
             android:gravity="center"
             android:text="Timer"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-    </LinearLayout>
-
+    </LinearLayout>        
+        
+        
     <View
         android:id="@+id/divider"
         android:layout_width="fill_parent"

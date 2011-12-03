@@ -2,12 +2,14 @@ package com.WordFinder;
 
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,7 +18,9 @@ import android.widget.TextView;
  * Main application activity.
  * 
  * @author John Mooring (jmooring)
- * @version Oct 29, 2011
+ * @author Chris Buck (cmbuck)
+ * @author Bryan Malyn (bmalyn)
+ * @version 2011.10.29
  */
 public class WordFinderActivity extends Activity {
 	/**
@@ -24,10 +28,18 @@ public class WordFinderActivity extends Activity {
 	 */
 	private static WordFinderActivity instance;
 	private static TextView points;
-	private static TextView timer;
+	private static TextView timerText;
+	private static int time = 180;
 	private LetterGrid grid;
 	private LetterGridView board;
 	private final int GRID_SIZE = 4;
+	private static Timer timer;
+	final Handler handler = new Handler() {
+		public void handleMessage(Message m) {
+			timerText.setText("Time: " + time / 60 + ":"
+					+ (time % 60 < 10 ? "0" + time % 60 : time % 60));
+		}
+	};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,23 +48,46 @@ public class WordFinderActivity extends Activity {
 		setContentView(R.layout.main);
 		board = (LetterGridView) findViewById(R.id.letterGrid);
 		points = (TextView) findViewById(R.id.points);
-		timer = (TextView) findViewById(R.id.timer);
+		timerText = (TextView) findViewById(R.id.timer);
 		grid = new LetterGrid();
-		grid.loadRandom(getIntent().getIntExtra("size", GRID_SIZE));
-		board.setModel(grid);
-		getWindow().setBackgroundDrawableResource(R.drawable.background);
 		grid.addObserver(new Observer() {
 			public void update(Observable observable, Object data) {
 				points.setText("Points: " + grid.getPoints() + "/"
 						+ grid.getPossiblePoints());
 			}
 		});
-		grid.updateAll();
+
+		if (timer == null) {
+			timer = new Timer();
+			timer.scheduleAtFixedRate(new TimerTask() {
+				public void run() {
+					time--;
+					handler.sendEmptyMessage(0);
+					if (time == 0) {
+						gotoResults();
+					}
+				}
+			}, 0, 1000);
+		}
+		board.setModel(grid);
+		getWindow().setBackgroundDrawableResource(R.drawable.background);
+		newBoard();
+	}
+	
+	public void onResume(){
+		newBoard();
+		super.onResume();
 	}
 
 	public void newBoard(View v) {
 		// TODO are you sure dialogue
+		newBoard();
+	}
+
+	public void newBoard() {
 		grid.loadRandom(getIntent().getIntExtra("size", GRID_SIZE));
+		time = 180;
+		handler.sendEmptyMessage(0);
 	}
 
 	public void giveUp(View v) {
@@ -62,9 +97,15 @@ public class WordFinderActivity extends Activity {
 
 	public void gotoResults() {
 		Intent intent = new Intent(this, ResultsActivity.class);
-		intent.putExtra("userWords", grid.getFoundWords().toArray());
-		intent.putExtra("solvedWords", WordSolver.getInstance().getWords()
-				.toArray());
+		intent.putExtra("userPoints", grid.getPoints());
+		intent.putExtra("solvedPoints", grid.getPossiblePoints());
+		intent.putExtra("size", getIntent().getIntExtra("size", GRID_SIZE));
+		String[] userWords = {};
+		userWords = grid.getFoundWords().toArray(userWords);
+		intent.putExtra("userWords", userWords);
+		String[] solvedWords = {};
+		solvedWords = WordSolver.getInstance().getWords().toArray(solvedWords);
+		intent.putExtra("solvedWords", solvedWords);
 		startActivity(intent);
 	}
 

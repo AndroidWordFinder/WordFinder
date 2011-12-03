@@ -68,7 +68,6 @@ public class LetterGridView extends View implements Observer {
 	public void setModel(LetterGrid model) {
 		model.addObserver(this);
 		this.model = model;
-		WordSolver.getInstance().solve(model);
 		model.updateAll();
 	}
 

@@ -91,6 +91,8 @@ public class LetterGrid extends Observable {
 		}
 		deselectPath();
 		foundWords.clear();
+		WordSolver.getInstance().solve(this);
+		updateAll();
 	}
 
 	/**
