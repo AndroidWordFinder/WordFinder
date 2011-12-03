@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Contains the letter in a grid cell, along with a table of all adjacent
  * letters.
- * 
+ *
  * @author John Mooring (jmooring)
  * @version Oct 30, 2011
  */
@@ -25,7 +25,7 @@ public class Tile {
 	/**
 	 * Constructs a letter object, takes the center character and an array of
 	 * adjacent characters
-	 * 
+	 *
 	 * @param letter
 	 *            character in the cell
 	 */
@@ -37,7 +37,7 @@ public class Tile {
 
 	/**
 	 * Get the contained character
-	 * 
+	 *
 	 * @return the contained char
 	 */
 	public char getLetter() {
@@ -46,7 +46,7 @@ public class Tile {
 
 	/**
 	 * Sets the state of the tile
-	 * 
+	 *
 	 * @param s
 	 *            state to set this tile to
 	 */
@@ -56,7 +56,7 @@ public class Tile {
 
 	/**
 	 * Gets the state of the tile
-	 * 
+	 *
 	 * @return the state of the tile
 	 */
 	public State getState() {
@@ -65,7 +65,7 @@ public class Tile {
 
 	/**
 	 * Checks to see if the passed character is adjacent to this letter
-	 * 
+	 *
 	 * @param letter
 	 *            the letter to check for adjacency
 	 * @return boolean whether or not the passed character is adjacent
@@ -77,7 +77,7 @@ public class Tile {
 	// ----------------------------------------------------------
 	/**
 	 * Returns a list of all adjacent tiles
-	 * 
+	 *
 	 * @return ArrayList<Tile> containing all adjacent tiles
 	 */
 	public ArrayList<Tile> getAdjascent() {
@@ -85,8 +85,8 @@ public class Tile {
 	}
 
 	/**
-	 * Adds an adjacent tile
-	 * 
+	 * Adds an adjacent tile (Note: duplicate tiles alowed)
+	 *
 	 * @param tile
 	 *            the tile to add to the adjacent tiles list
 	 */
