@@ -1,26 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-	<TextView android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:text="Points" android:id="@+id/pointsTextView"/>
-	<LinearLayout android:layout_height="wrap_content"
-		android:layout_width="match_parent" android:id="@+id/linearLayout1">
-		
-		<ListView android:id="@+id/listViewLeft" android:layout_width="200px" android:layout_height="300dp"></ListView>
-		<ListView android:id="@+id/listViewRight" android:layout_width="200px" android:layout_height="300dp"></ListView>
+    <TextView
+        android:id="@+id/pointsTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="Points"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/pointsTextView"
+        android:background="@drawable/gradient" />
 
-	</LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/View01"
+        android:layout_below="@+id/divider" >
 
-	<LinearLayout android:layout_height="match_parent"
-		android:layout_width="wrap_content" android:id="@+id/linearLayout2">
-		<Button android:text="Title Screen" android:id="@+id/titleScreenButton"
-			android:layout_height="wrap_content" android:layout_width="match_parent" android:onClick="onTitleScreenClicked"></Button>
-		<Button android:text="Play Again" android:id="@+id/playAgainButton"
-			android:layout_width="wrap_content" android:layout_height="wrap_content" android:onClick="onPlayAgainClicked"></Button>
+        <ListView
+            android:id="@+id/listViewLeft"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+        </ListView>
 
-	</LinearLayout>
+        <ListView
+            android:id="@+id/listViewRight"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+        </ListView>
+    </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" 
+        android:layout_marginTop="5dp">
+
+        <Button
+            android:id="@+id/playAgainButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="56dp"
+            android:layout_weight="2"
+            android:onClick="onPlayAgainClicked"
+            android:text="Play Again" />
+
+        <Button
+            android:id="@+id/titleScreenButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:onClick="onTitleScreenClicked"
+            android:text="Title Screen" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/View01"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_above="@+id/linearLayout2"
+        android:background="@drawable/gradient" />
+
+</RelativeLayout>

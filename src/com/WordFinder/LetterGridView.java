@@ -31,9 +31,9 @@ public class LetterGridView extends View implements Observer {
 	private Bitmap downButton;
 	private Bitmap badButton;
 	private Bitmap goodButton;
+	private Bitmap dupeButton;
 	private boolean onTile;
 	private boolean wasOnTile;
-	private int points = 0;
 
 	// ----------------------------------------------------------
 	/**
@@ -46,7 +46,6 @@ public class LetterGridView extends View implements Observer {
 	 */
 	public LetterGridView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-
 		upButton = BitmapFactory.decodeResource(context.getResources(),
 				R.drawable.button_up);
 		downButton = BitmapFactory.decodeResource(context.getResources(),
@@ -55,6 +54,8 @@ public class LetterGridView extends View implements Observer {
 				R.drawable.button_bad);
 		goodButton = BitmapFactory.decodeResource(context.getResources(),
 				R.drawable.button_good);
+		dupeButton = BitmapFactory.decodeResource(context.getResources(),
+				R.drawable.button_repeat);
 		onTile = false;
 		wasOnTile = false;
 	}
@@ -67,8 +68,8 @@ public class LetterGridView extends View implements Observer {
 	public void setModel(LetterGrid model) {
 		model.addObserver(this);
 		this.model = model;
-		Set<String> words= WordSolver.getInstance().solve(model);
-		Log.d("WordSolver",words.toString());
+		WordSolver.getInstance().solve(model);
+		model.updateAll();
 	}
 
 	/**
@@ -98,6 +99,9 @@ public class LetterGridView extends View implements Observer {
 					case BAD:
 						toDraw = badButton;
 						break;
+					case DUPE:
+						toDraw = dupeButton;
+						break;
 					}
 					c.drawBitmap(toDraw, null, drawArea, paint);
 					paint.setColor(0xFFFFFFFF);
@@ -110,6 +114,20 @@ public class LetterGridView extends View implements Observer {
 							convertToCanvasSize(y) + convertToCanvasSize(1)
 									* .65f, paint);
 				}
+			}
+			for (int i = 0; i < model.getPath().size() - 1; i++) {
+				Tile t1 = model.getPath().get(i);
+				Tile t2 = model.getPath().get(i + 1);
+				float x1 = convertToCanvasSize(t1.getX())+convertToCanvasSize(1)*.5f;
+				float y1 = convertToCanvasSize(t1.getY())+convertToCanvasSize(1)*.5f;
+				float x2 = convertToCanvasSize(t2.getX())+convertToCanvasSize(1)*.5f;
+				float y2 = convertToCanvasSize(t2.getY())+convertToCanvasSize(1)*.5f;
+				paint.setStrokeWidth(16);
+				paint.setColor(0x44FFFF00);
+				c.drawLine(x1, y1, x2, y2, paint);
+				paint.setColor(0x50FFFF00);
+				c.drawCircle(x1,y1, 8, paint);
+				c.drawCircle(x2,y2, 8, paint);
 			}
 		}
 	}
@@ -173,8 +191,7 @@ public class LetterGridView extends View implements Observer {
 				(int) (Math.min(x / convertToCanvasSize(1), model.size() - 1)),
 				(int) (Math.min(y / convertToCanvasSize(1), model.size() - 1)));
 	}
-	
-	
+
 	/**
 	 * Overridden to force the view to be square (have the same width and
 	 * height).

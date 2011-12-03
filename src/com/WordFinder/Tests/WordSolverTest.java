@@ -18,8 +18,7 @@ public class WordSolverTest extends student.TestCase{
 		char[][]cgrid = {{'a','n'},
 				{'c','d'}};
 		grid.load(cgrid);
-		assertEquals(ltos(solver.dictionary[1000]),"test");
-		assertTrue(solver.dictionary.length>100000);
+		
 		assertEquals(solver.solve(grid).size(),10);
 
     }

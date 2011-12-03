@@ -14,7 +14,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".About"/>
-        <activity android:name=".WordFinderActivity"/>
+        <activity android:name=".WordFinderActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ResultsActivity"/>
     <uses-library android:name="android.test.runner"/>
     </application>

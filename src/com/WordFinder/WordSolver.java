@@ -16,11 +16,11 @@ import android.util.Log;
  * @version 2011.11.8
  */
 public class WordSolver {
-	public static WordSolver instance;
-	public TreeSet<String> foundWords;
-	public long[] dictionary;
-	public final int MAX_DEPTH = 10;
-	public final int DICTIONARY_LENGTH = 126905;
+	private static WordSolver instance;
+	private TreeSet<String> foundWords;
+	private long[] dictionary;
+	private final int MAX_DEPTH = 10;
+	private final int DICTIONARY_LENGTH = 128734;
 
 	/**
 	 * Singleton constructor

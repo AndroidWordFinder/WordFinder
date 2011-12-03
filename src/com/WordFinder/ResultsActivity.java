@@ -99,7 +99,8 @@ public class ResultsActivity extends Activity
      */
     public void onPlayAgainClicked(View v)
     {
-        //TODO: something
+    	//TODO
+        startActivity(new Intent(this,TitleScreenActivity.class));
     }
 
     /**
