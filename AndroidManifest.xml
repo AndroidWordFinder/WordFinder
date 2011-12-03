@@ -6,7 +6,7 @@
     <uses-sdk android:minSdkVersion="10" />
     <instrumentation android:name="android.test.InstrumentationTestRunner" android:targetPackage="com.WordFinder"></instrumentation>
     <application android:icon="@drawable/icon" android:label="@string/app_name">
-        <activity android:name=".WordFinderActivity.TitleScreenActivity"
+        <activity android:name=".TitleScreenActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -15,7 +15,7 @@
         </activity>
         <activity android:name=".About"/>
         <activity android:name=".WordFinderActivity"/>
-        <activity android:name=".ResultsActivity"/>        
-    <uses-library android:name="android.test.runner"/>    
+        <activity android:name=".ResultsActivity"/>
+    <uses-library android:name="android.test.runner"/>
     </application>
 </manifest>
