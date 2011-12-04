@@ -16,7 +16,7 @@ import android.widget.TextView;
 // -------------------------------------------------------------------------
 /**
  * Main application activity.
- * 
+ *
  * @author John Mooring (jmooring)
  * @author Chris Buck (cmbuck)
  * @author Bryan Malyn (bmalyn)
@@ -34,7 +34,7 @@ public class WordFinderActivity extends Activity {
 	private LetterGridView board;
 	private final int GRID_SIZE = 4;
 	private static Timer timer;
-	final Handler handler = new Handler() {
+	private final Handler handler = new Handler() {
 		public void handleMessage(Message m) {
 			timerText.setText("Time: " + time / 60 + ":"
 					+ (time % 60 < 10 ? "0" + time % 60 : time % 60));
@@ -73,7 +73,7 @@ public class WordFinderActivity extends Activity {
 		getWindow().setBackgroundDrawableResource(R.drawable.background);
 		newBoard();
 	}
-	
+
 	public void onResume(){
 		newBoard();
 		super.onResume();
@@ -111,7 +111,7 @@ public class WordFinderActivity extends Activity {
 
 	/**
 	 * Returns an instance of this activity so classes can get context
-	 * 
+	 *
 	 * @return instance of this activity
 	 */
 	public static WordFinderActivity getInstance() {

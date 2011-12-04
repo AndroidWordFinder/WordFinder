@@ -27,7 +27,7 @@ public class LetterGrid extends Observable {
 	/**
 	 * Generates and loads a square grid of characters with a side length of the
 	 * passed integer
-	 * 
+	 *
 	 * @param size
 	 *            the side length of the square character grid
 	 */
@@ -65,7 +65,7 @@ public class LetterGrid extends Observable {
 	 * Creates the grid from the passed array of letters. Characters are
 	 * transformed into Tiles, and the tiles are given an array of all adjacent
 	 * tiles.
-	 * 
+	 *
 	 * @precondition letters is square
 	 * @param letters
 	 *            the letters to load
@@ -135,7 +135,7 @@ public class LetterGrid extends Observable {
 
 	/**
 	 * Returns the calculated points based on words found by the user
-	 * 
+	 *
 	 * @return the users points
 	 */
 	public int getPoints() {
@@ -148,7 +148,7 @@ public class LetterGrid extends Observable {
 
 	/**
 	 * Returns the sum of the point values of all words on the grid
-	 * 
+	 *
 	 * @return possible points
 	 */
 	public int getPossiblePoints() {
@@ -171,7 +171,7 @@ public class LetterGrid extends Observable {
 	 * WordSolver to check if the word contained in the current path is valid
 	 * Sets the tiles in the path as good or bad depending on whether the word
 	 * was good or bad. Notifies Observers.
-	 * 
+	 *
 	 * @precondition the contained in the current path is valid
 	 */
 	public void submitWord() {
@@ -179,7 +179,8 @@ public class LetterGrid extends Observable {
 		for (Tile t : path) {
 			s += t.getLetter();
 		}
-
+		s = s.replace("q", "qu");
+		Log.d("word", s);
 		if (WordSolver.getInstance().isWord(s)) {
 			if (foundWords.contains(s)) {
 				for (Tile t : path) {
@@ -204,7 +205,7 @@ public class LetterGrid extends Observable {
 	// ----------------------------------------------------------
 	/**
 	 * Place a description of your method here.
-	 * 
+	 *
 	 * @param x
 	 * @param y
 	 * @return

@@ -19,7 +19,7 @@ import android.view.View;
 // -------------------------------------------------------------------------
 /**
  * Character Grid
- * 
+ *
  * @author John Mooring (jmooring)
  * @author Bryan Malyn (bmalyn)
  * @version Oct 30, 2011
@@ -38,7 +38,7 @@ public class LetterGridView extends View implements Observer {
 	// ----------------------------------------------------------
 	/**
 	 * Create a new LetterGridView object.
-	 * 
+	 *
 	 * @param context
 	 *            the context in which this was created
 	 * @param attrs
@@ -62,7 +62,7 @@ public class LetterGridView extends View implements Observer {
 
 	/**
 	 * Sets the model add attaches a observer to it.
-	 * 
+	 *
 	 * @param model
 	 */
 	public void setModel(LetterGrid model) {
@@ -105,10 +105,10 @@ public class LetterGridView extends View implements Observer {
 					c.drawBitmap(toDraw, null, drawArea, paint);
 					paint.setColor(0xFFFFFFFF);
 					paint.setTextAlign(Paint.Align.CENTER);
-					paint.setTextSize(convertToCanvasSize(1) * 0.5f);
+					paint.setTextSize(convertToCanvasSize(1) * 0.4f);
 					c.drawText(
-							(char) (model.getTile(x, y).getLetter() + 'A' - 'a')
-									+ "", convertToCanvasSize(x)
+					    ((char) (model.getTile(x, y).getLetter() + 'A' - 'a')
+                            + "").replace("Q", "Qu"), convertToCanvasSize(x)
 									+ convertToCanvasSize(1) / 2,
 							convertToCanvasSize(y) + convertToCanvasSize(1)
 									* .65f, paint);
@@ -134,7 +134,7 @@ public class LetterGridView extends View implements Observer {
 	/**
 	 * Called when a touch event occurs on the view; either pressing the finger
 	 * down for the first time, moving it on the screen, or lifting it back up.
-	 * 
+	 *
 	 * @param e
 	 *            a MotionEvent object that describes the touch event
 	 * @return true if this method handled the touch, or false if it did not
@@ -171,7 +171,7 @@ public class LetterGridView extends View implements Observer {
 
 	/**
 	 * Convert cell number to pixel size.
-	 * 
+	 *
 	 * @pa lNumber to be converted
 	 * @return float the converted number
 	 */
@@ -181,7 +181,7 @@ public class LetterGridView extends View implements Observer {
 
 	/**
 	 * Convert pixel size to cell number.
-	 * 
+	 *
 	 * @pa vasSize the converted number
 	 * @return int to be converted
 	 */
@@ -194,7 +194,7 @@ public class LetterGridView extends View implements Observer {
 	/**
 	 * Overridden to force the view to be square (have the same width and
 	 * height).
-	 * 
+	 *
 	 * @pa thMeasureSpec the desired width as determined by the layout
 	 * @param heightMeasureSpec
 	 *            the desired height as determined by the layout
