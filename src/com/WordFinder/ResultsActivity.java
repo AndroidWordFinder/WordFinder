@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 /**
  * Activity for the Results Screen
- * 
+ *
  * @author cmbuck
  * @version Nov 28, 2011
  */
@@ -25,7 +25,7 @@ public class ResultsActivity extends Activity {
 
 	/**
 	 * Called when the activity is first created.
-	 * 
+	 *
 	 * @param savedInstanceState
 	 *            previous state saved by the last run of the activity
 	 */
@@ -79,16 +79,6 @@ public class ResultsActivity extends Activity {
 		Intent intent = new Intent(this, WordFinderActivity.class);
 		intent.putExtra("size", getIntent().getIntExtra("size", 4));
 		startActivity(intent);
-	}
-
-	/**
-	 * Sets the string to be displayed by the points TextView
-	 * 
-	 * @param str
-	 *            The string to be displayed
-	 */
-	public void setPoints(String str) {
-		points.setText(str);
 	}
 
 }
