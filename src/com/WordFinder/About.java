@@ -3,8 +3,7 @@ package com.WordFinder;
 import android.app.Activity;
 import android.os.Bundle;
 
-/*
- * // -------------------------------------------------------------------------
+
 /**
  *  About activity. Shows a simple view crediting the
  *  authors and describing the project.

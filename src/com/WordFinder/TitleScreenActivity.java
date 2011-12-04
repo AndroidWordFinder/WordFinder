@@ -79,7 +79,6 @@ public class TitleScreenActivity extends Activity
      */
     public void onInstructionsClicked(View v)
     {
-        //start the InstructionsActivity once there is one
-        //startActivity(new Intent(this, Instructions.class));
+        startActivity(new Intent(this, Instructions.class));
     }
 }

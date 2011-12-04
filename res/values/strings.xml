@@ -3,4 +3,5 @@
     <string name="hello">Hello World, WordFinderActivity!</string>
     <string name="app_name">WordFinder</string>
     <string name="about">\nWordFinder\n\n\nCreated By:\n\n    Bryan Malyn\n    John Mooring\n    Christopher Buck\n\n\n\nCS 2114 Fall 2011 Group Project</string>
+    <string name="instructions">\nWordFinder\n\nYou have two minutes to find all of the words on the board.\n\nYou select the words by dragging your finger over neighboring tiles.\n\nWords must be three or more letters long.</string>
 </resources>
