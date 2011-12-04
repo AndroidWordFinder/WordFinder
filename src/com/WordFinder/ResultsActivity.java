@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 /**
  * Activity for the Results Screen
- *
+ * 
  * @author cmbuck
  * @version Nov 28, 2011
  */
@@ -25,7 +25,7 @@ public class ResultsActivity extends Activity {
 
 	/**
 	 * Called when the activity is first created.
-	 *
+	 * 
 	 * @param savedInstanceState
 	 *            previous state saved by the last run of the activity
 	 */
@@ -39,6 +39,20 @@ public class ResultsActivity extends Activity {
 		right = (ListView) findViewById(R.id.listViewRight);
 		titleScreen = (Button) findViewById(R.id.titleScreenButton);
 		playAgain = (Button) findViewById(R.id.playAgainButton);
+		init();
+	}
+
+	public void onResume() {
+		init();
+		super.onResume();
+	}
+	
+	public void onPause(){
+		finish();
+		super.onPause();
+	}
+
+	public void init() {
 		points.setText("Points: " + getIntent().getIntExtra("userPoints", 0)
 				+ "/" + getIntent().getIntExtra("solvedPoints", 0)
 				+ "  Words: "
@@ -55,7 +69,8 @@ public class ResultsActivity extends Activity {
 
 		// set left ListView to have the list of found words
 		ArrayAdapter<String> leftAdapter = new ArrayAdapter<String>(this,
-				R.layout.list_item, getIntent().getStringArrayExtra("userWords"));
+				R.layout.list_item, getIntent()
+						.getStringArrayExtra("userWords"));
 
 		// set right ListView to have the list of all possible words
 		ArrayAdapter<String> rightAdapter = new ArrayAdapter<String>(this,

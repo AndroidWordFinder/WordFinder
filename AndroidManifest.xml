@@ -33,6 +33,9 @@
         <activity
             android:name=".ResultsActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".Instructions"
+            android:screenOrientation="portrait" />
 
         <uses-library android:name="android.test.runner" />
     </application>

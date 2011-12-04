@@ -28,9 +28,8 @@
             android:gravity="center"
             android:text="Timer"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-    </LinearLayout>        
-        
-        
+    </LinearLayout>
+
     <View
         android:id="@+id/divider"
         android:layout_width="fill_parent"
@@ -41,13 +40,15 @@
         android:id="@+id/letterGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-<View
+
+    <View
         android:id="@+id/divider2"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
         android:background="@drawable/gradient" />
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
@@ -56,19 +57,18 @@
         <Button
             android:id="@+id/newBoard"
             android:layout_width="fill_parent"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:onClick="newBoard"
             android:text="New Board" />
 
         <Button
             android:id="@+id/giveUp"
             android:layout_width="fill_parent"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:onClick="giveUp"
             android:text="Give Up" />
-
     </LinearLayout>
 
 </LinearLayout>

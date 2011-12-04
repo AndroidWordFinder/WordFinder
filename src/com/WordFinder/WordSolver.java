@@ -93,7 +93,7 @@ public class WordSolver {
      */
     private void solve(Tile tile, String current, boolean[][] visited, int depth)
     {
-        String word = current + tile.getLetter();
+        String word = current + (tile.getLetter()=='q'?"qu":tile.getLetter());
         if (!couldBeWord(word))
         {
             return;
