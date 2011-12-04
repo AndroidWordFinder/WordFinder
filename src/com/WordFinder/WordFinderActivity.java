@@ -85,7 +85,10 @@ public class WordFinderActivity extends Activity {
 	}
 
 	public void newBoard() {
-		grid.loadRandom(getIntent().getIntExtra("size", GRID_SIZE));
+		do
+		    {
+		    grid.loadRandom(getIntent().getIntExtra("size", GRID_SIZE));
+		    } while(grid.getPossiblePoints() < 150);
 		time = 180;
 		handler.sendEmptyMessage(0);
 	}
