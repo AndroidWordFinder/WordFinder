@@ -1,4 +1,10 @@
 package com.WordFinder.Tests;
+
+import com.WordFinder.LetterGrid;
+import com.WordFinder.LetterGridView;
+import com.WordFinder.WordFinderActivity;
+import com.WordFinder.WordSolver;
+
 /**
  * Test class for @link WordSolver.
  *
@@ -7,30 +13,33 @@ package com.WordFinder.Tests;
  * @author Bryan Malyn (bmalyn)
  * @version 2011.11.29
  */
-import com.WordFinder.LetterGrid;
-import com.WordFinder.LetterGridView;
-import com.WordFinder.WordFinderActivity;
-import com.WordFinder.WordSolver;
-
 public class WordSolverTest
     extends student.AndroidTestCase<WordFinderActivity>
 {
 
     private WordSolver solver;
 
-
+    /**
+     * Constructs a new WordSolverTest
+     */
     public WordSolverTest()
     {
         super(WordFinderActivity.class);
     }
 
-
+    /**
+     * Sets up the testing environment
+     */
     public void setUp()
     {
+        @SuppressWarnings("unused")
         LetterGridView v = getView(LetterGridView.class, com.WordFinder.R.id.letterGrid);
         solver = WordSolver.getInstance();
     }
 
+    /**
+     * Tests the solve() method
+     */
     public void testSolve()
     {
         LetterGrid grid = new LetterGrid();
@@ -65,21 +74,4 @@ public class WordSolverTest
 
     }
 
-
-    private static String ltos(long l)
-    {
-        StringBuffer stb = new StringBuffer();
-        int x = 0;
-        byte n;
-        while ((l & 31) == 0 && x++ <= 12)
-        {
-            l >>>= 5;
-        }
-        while ((n = (byte)(l & 31)) != 0)
-        {
-            stb.insert(0, (char)('a' + n - 1));
-            l >>>= 5;
-        }
-        return stb.toString();
-    }
 }
