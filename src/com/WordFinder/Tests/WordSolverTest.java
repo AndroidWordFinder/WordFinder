@@ -1,12 +1,5 @@
 package com.WordFinder.Tests;
-/**
- * Test class for @link WordSolver.
- *
- * @author John Mooring (jmooring)
- * @author Christopher Buck (cmbuck)
- * @author Bryan Malyn (bmalyn)
- * @version 2011.11.29
- */
+
 import com.WordFinder.LetterGrid;
 import com.WordFinder.LetterGridView;
 import com.WordFinder.WordFinderActivity;
@@ -20,63 +13,65 @@ import com.WordFinder.WordSolver;
  * @author Christopher Buck (cmbuck)
  * @version 2011.12.3
  */
-public class WordSolverTest
-    extends student.AndroidTestCase<WordFinderActivity>
-{
+public class WordSolverTest extends student.AndroidTestCase<WordFinderActivity> {
 
-    private WordSolver solver;
+	private WordSolver solver;
 
-    /**
-     * Calls super for WordFinderActivity
-     */
-    public WordSolverTest()
-    {
-        super(WordFinderActivity.class);
-    }
+	/**
+	 * <<<<<<< HEAD Calls super for WordFinderActivity ======= Constructs a new
+	 * WordSolverTest >>>>>>> branch 'refs/heads/master' of
+	 * git@github.com:AndroidWordFinder/WordFinder.git
+	 */
+	public WordSolverTest() {
+		super(WordFinderActivity.class);
+	}
 
-    /**
-     * Sets up tests. Called before each test.
-     */
-    public void setUp()
-    {
-        LetterGridView unused = getView(LetterGridView.class, com.WordFinder.R.id.letterGrid);
-        //Forces the view to be created, allowing the dictionary to be loaded.
-        solver = WordSolver.getInstance();
-    }
+	/**
+	 * <<<<<<< HEAD Sets up tests. Called before each test. ======= Sets up the
+	 * testing environment >>>>>>> branch 'refs/heads/master' of
+	 * git@github.com:AndroidWordFinder/WordFinder.git
+	 */
+	public void setUp() {
+		@SuppressWarnings("unused")
+		LetterGridView v = getView(LetterGridView.class,
+				com.WordFinder.R.id.letterGrid);
+		solver = WordSolver.getInstance();
+	}
 
-    /**
-     * Tests the solve method
-     */
-    public void testSolve()
-    {
-        LetterGrid grid = new LetterGrid();
-        char[][] cgrid = { { 'a', 'n' }, { 'c', 'd' } };
-        grid.load(cgrid);
-        assertEquals(solver.solve(grid).size(), 4);
-        assertEquals(solver.solve(grid), solver.getWords());
+	/**
+	 * <<<<<<< HEAD Tests the solve method ======= Tests the solve() method
+	 * >>>>>>> branch 'refs/heads/master' of
+	 * git@github.com:AndroidWordFinder/WordFinder.git
+	 */
+	public void testSolve() {
+		LetterGrid grid = new LetterGrid();
+		char[][] cgrid = { { 'a', 'n' }, { 'c', 'd' } };
+		grid.load(cgrid);
+		assertEquals(solver.solve(grid).size(), 4);
+		assertEquals(solver.solve(grid), solver.getWords());
 
-    }
+	}
 
-    /**
-     * Test if a word is in the dictionary.
-     */
-    public void testIsWord() {
-        assertTrue(solver.isWord("and"));
-        assertTrue(solver.isWord("cad"));
-        assertTrue(solver.isWord("can"));
-        assertTrue(solver.isWord("dan"));
-       assertFalse(solver.isWord("zasldkjzz"));
+	/**
+	 * Test if a word is in the dictionary.
+	 */
+	public void testIsWord() {
+		assertTrue(solver.isWord("and"));
+		assertTrue(solver.isWord("cad"));
+		assertTrue(solver.isWord("can"));
+		assertTrue(solver.isWord("dan"));
+		assertFalse(solver.isWord("zasldkjzz"));
 
-    }
+	}
 
-    /**
-     * Test if a word cold be in the dictionary.
-     */
-    public void testCouldBeWord() {
-        assertTrue(solver.couldBeWord("an"));
-        assertTrue(solver.couldBeWord("ca"));
-        assertTrue(solver.couldBeWord("ca"));
-        assertTrue(solver.couldBeWord("da"));
-        assertFalse(solver.couldBeWord("zasldkjzz"));
-    }
+	/**
+	 * Test if a word cold be in the dictionary.
+	 */
+	public void testCouldBeWord() {
+		assertTrue(solver.couldBeWord("an"));
+		assertTrue(solver.couldBeWord("ca"));
+		assertTrue(solver.couldBeWord("ca"));
+		assertTrue(solver.couldBeWord("da"));
+		assertFalse(solver.couldBeWord("zasldkjzz"));
+	}
 }

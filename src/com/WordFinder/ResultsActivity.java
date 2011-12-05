@@ -43,6 +43,7 @@ public class ResultsActivity
         init();
     }
 
+
     /**
      * Refreshes the view when the activity is resumed
      */
@@ -51,6 +52,7 @@ public class ResultsActivity
         init();
         super.onResume();
     }
+
 
     /**
      * Finishes this activity on pause
@@ -67,12 +69,18 @@ public class ResultsActivity
      */
     public void init()
     {
-        points.setText("Points: " + getIntent().getIntExtra("userPoints", 0)
-            + "/" + getIntent().getIntExtra("solvedPoints", 0) + "  Words: "
-            + getIntent().getStringArrayExtra("userWords").length + "/"
-            + getIntent().getStringArrayExtra("solvedWords").length);
+        if (getIntent() != null
+            && getIntent().getStringArrayExtra("userWords") != null
+            && getIntent().getStringArrayExtra("solvedWords") != null)
+        {
+            points.setText("Points: "
+                + getIntent().getIntExtra("userPoints", 0) + "/"
+                + getIntent().getIntExtra("solvedPoints", 0) + "  Words: "
+                + getIntent().getStringArrayExtra("userWords").length + "/"
+                + getIntent().getStringArrayExtra("solvedWords").length);
 
-        populateListViews();
+            populateListViews();
+        }
     }
 
 
@@ -98,7 +106,9 @@ public class ResultsActivity
 
     /**
      * Does something when the titleScreen button is clicked
-     * @param v unused
+     *
+     * @param v
+     *            unused
      */
     public void onTitleScreenClicked(View v)
     {
@@ -108,7 +118,9 @@ public class ResultsActivity
 
     /**
      * Does something when the playAgain button is clicked
-     * @param v unused
+     *
+     * @param v
+     *            unused
      */
     public void onPlayAgainClicked(View v)
     {
