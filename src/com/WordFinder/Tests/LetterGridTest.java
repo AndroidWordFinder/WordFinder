@@ -20,6 +20,10 @@ import student.TestCase;
 public class LetterGridTest extends student.AndroidTestCase<WordFinderActivity> {
 
 
+    // ----------------------------------------------------------
+    /**
+     * Create a new LetterGridTest object.
+     */
     public LetterGridTest()
     {
         super(WordFinderActivity.class);
