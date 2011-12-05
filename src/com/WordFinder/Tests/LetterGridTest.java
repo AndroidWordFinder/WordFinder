@@ -1,5 +1,7 @@
 package com.WordFinder.Tests;
 
+import com.WordFinder.LetterGridView;
+import com.WordFinder.WordFinderActivity;
 import com.WordFinder.LetterGrid;
 import com.WordFinder.Tile;
 import com.WordFinder.Tile.State;
@@ -15,14 +17,27 @@ import student.TestCase;
  *  @author Christopher Buck (cmbuck)
  *  @version 2011.12.04
  */
-public class LetterGridTest extends TestCase {
+public class LetterGridTest extends student.AndroidTestCase<WordFinderActivity> {
+
+
+    public LetterGridTest()
+    {
+        super(WordFinderActivity.class);
+    }
 
 	private LetterGrid grid;
 
+	/**
+	 * Set up a grid.
+	 */
 	public void setUp() {
 		grid = new LetterGrid();
+        LetterGridView v = getView(LetterGridView.class, com.WordFinder.R.id.letterGrid);
 	}
 
+	/**
+	 * Load a random board.
+	 */
 	public void testLoadRandom() {
 		grid.loadRandom(4);
 		assertEquals(grid.size(), 4);
@@ -35,11 +50,17 @@ public class LetterGridTest extends TestCase {
 		}
 	}
 
+	/**
+	 * Load a custom board.
+	 */
 	public void testLoad() {
 		grid.load(generateGrid("abc", "def", "ghi"));
 		assertTilesString("abcdfghi", grid.getTile(1, 1).getAdjascent());
 	}
 
+	/**
+	 * Test setSelected.
+	 */
 	public void testSetSelected() {
 		grid.load(generateGrid("ab", "cd"));
 		grid.setSelected(grid.getTile(0, 0));
@@ -53,10 +74,33 @@ public class LetterGridTest extends TestCase {
 
 	}
 
-	public void testSubmitWord() {
-		// TODO
+	/**
+	 * Test adding word by selecting tiles.
+	 */
+	public void testSubmitWordAndGetFoundWords() {
+	    grid.load(generateGrid("ab", "cd"));
+        grid.setSelected(grid.getTile(0, 0));
+        grid.setSelected(grid.getTile(1, 0));
+        grid.setSelected(grid.getTile(0, 1));
+        grid.submitWord();
+        assertFalse(grid.getFoundWords().contains("acb"));
+        grid.setSelected(grid.getTile(1, 0));
+        grid.setSelected(grid.getTile(0, 0));
+        grid.setSelected(grid.getTile(1, 1));
+        grid.submitWord();
+        assertTrue(grid.getFoundWords().contains("cad"));
+        grid.setSelected(grid.getTile(1, 0));
+        grid.setSelected(grid.getTile(0, 0));
+        grid.setSelected(grid.getTile(1, 1));
+        grid.submitWord();
+        assertTrue(grid.getFoundWords().contains("cad"));
+
+
 	}
 
+	/**
+	 * Test the getTile method.
+	 */
 	public void testGetTile() {
 		grid.load(generateGrid("ab", "cd"));
 		assertEquals(grid.getTile(1, 0).getX(), 1);
@@ -66,10 +110,6 @@ public class LetterGridTest extends TestCase {
 		assertEquals(grid.getTile(0, 1).getY(), 1);
 	}
 
-	public void testGetFoundWords()
-	{
-	    //TODO
-	}
 
 	private void assertTilesString(String string, ArrayList<Tile> path) {
 		assertNotNull(path);
