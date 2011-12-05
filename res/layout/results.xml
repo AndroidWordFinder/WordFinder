@@ -30,8 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/View01"
-        android:layout_below="@+id/divider"
-         >
+        android:layout_below="@+id/divider" >
 
         <ListView
             android:id="@+id/listViewLeft"
@@ -64,6 +63,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="56dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="2"
             android:background="@drawable/button"
             android:onClick="onPlayAgainClicked"
@@ -73,6 +73,7 @@
             android:id="@+id/titleScreenButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_weight="2"
             android:background="@drawable/button"
             android:onClick="onTitleScreenClicked"

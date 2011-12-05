@@ -62,7 +62,8 @@
             android:layout_weight="1"
             android:onClick="newBoard"
             android:text="New Board"
-            android:background="@drawable/button" />
+            android:background="@drawable/button" 
+            android:layout_marginRight="5dp"/>
 
         <Button
             android:id="@+id/giveUp"
@@ -71,7 +72,8 @@
             android:layout_weight="1"
             android:onClick="giveUp"
             android:text="Give Up"
-            android:background="@drawable/button"/>
+            android:background="@drawable/button"
+            android:layout_marginLeft="5dp"/>
     </LinearLayout>
 
 </LinearLayout>
