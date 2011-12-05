@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/backgradient" >
-
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"

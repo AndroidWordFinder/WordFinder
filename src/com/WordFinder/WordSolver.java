@@ -11,18 +11,21 @@ import android.util.Log;
  * /** Solves LetterGrids, checks to see if a found word is valid.
  *
  * @author John Mooring (jmooring)
+ * @author Bryan Malyn (bmalyn)
+ * @author Christopher Buck (cmbuck)
  * @version 2011.11.8
  */
-public class WordSolver {
-	private static WordSolver instance;
-	private TreeSet<String> foundWords;
-	private long[] dictionary;
-	private final int MAX_DEPTH = 10;
-	private final int DICTIONARY_LENGTH = 128734;
+public class WordSolver
+{
+    private static WordSolver instance;
+    private TreeSet<String>   foundWords;
+    private long[]            dictionary;
+    private final int         MAX_DEPTH         = 10;
+    private final int         DICTIONARY_LENGTH = 128734;
 
 
     /**
-     * Singleton constructor
+     * Singleton constructor. Get an instance of this activity with getInstance
      */
     private WordSolver()
     {
@@ -66,8 +69,12 @@ public class WordSolver {
 
     /**
      * Solves the passed grid
+     *
+     * @param grid
+     *            the grid to solve
+     * @return Set containing the solved words
      */
-    public TreeSet<String> solve(LetterGrid grid)
+    public Set<String> solve(LetterGrid grid)
     {
         long t1 = System.currentTimeMillis();
         clearWords();
@@ -93,7 +100,8 @@ public class WordSolver {
      */
     private void solve(Tile tile, String current, boolean[][] visited, int depth)
     {
-        String word = current + (tile.getLetter()=='q'?"qu":tile.getLetter());
+        String word =
+            current + (tile.getLetter() == 'q' ? "qu" : tile.getLetter());
         if (!couldBeWord(word))
         {
             return;
@@ -161,6 +169,12 @@ public class WordSolver {
     }
 
 
+    /**
+     * Returns the closest word to the passed word in the dictionary
+     *
+     * @param word
+     * @return the long closest to the passed word
+     */
     public long find(String word)
     {
         return (dictionary[Math.abs(Arrays.binarySearch(
@@ -201,6 +215,8 @@ public class WordSolver {
 
     /**
      * Returns an instance of this class
+     *
+     * @return instance of this class
      */
     public static WordSolver getInstance()
     {

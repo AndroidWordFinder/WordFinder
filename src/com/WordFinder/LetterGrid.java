@@ -8,6 +8,12 @@ import java.util.Observable;
 
 import com.WordFinder.Tile.State;
 
+/**
+ *  Square grid of Tiles representing the game board
+ *
+ *  @author John Mooring (jmooring)
+ *  @version 2011.1.3
+ */
 public class LetterGrid extends Observable {
 
 	private Tile[][] grid;
@@ -98,6 +104,7 @@ public class LetterGrid extends Observable {
 	/**
 	 * If the tile is valid, (based on the last selected tile) the tile is added
 	 * to the current path list and has its state changed to DOWN
+	 * @param t the tile to select
 	 */
 	public void setSelected(Tile t) {
 		if (wordSubmitted) {
@@ -128,6 +135,7 @@ public class LetterGrid extends Observable {
 
 	/**
 	 * Returns the words found by the user.
+	 * @return set of words found by the user
 	 */
 	public Set<String> getFoundWords() {
 		return foundWords;
@@ -161,6 +169,7 @@ public class LetterGrid extends Observable {
 
 	/**
 	 * Returns the currently selected path
+	 * @return ArrayList containing the path
 	 */
 	public ArrayList<Tile> getPath() {
 		return path;
@@ -202,13 +211,13 @@ public class LetterGrid extends Observable {
 		notifyObservers();
 	}
 
-	// ----------------------------------------------------------
+
 	/**
 	 * Place a description of your method here.
 	 *
 	 * @param x
 	 * @param y
-	 * @return
+	 * @return tile at the passed coordinates
 	 */
 	public Tile getTile(int x, int y) {
 		return grid[x][y];
@@ -229,6 +238,7 @@ public class LetterGrid extends Observable {
 
 	/**
 	 * Returns the side length of the square grid
+	 * @return side length of square grid
 	 */
 	public int size() {
 		return grid.length;

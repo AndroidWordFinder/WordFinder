@@ -7,6 +7,14 @@ import com.WordFinder.Tile.State;
 import java.util.ArrayList;
 import student.TestCase;
 
+/**
+ *  Tests the LetterGrid class
+ *
+ *  @author John Mooring (jmooring)
+ *  @author Bryan Malyn (bmalyn)
+ *  @author Christopher Buck (cmbuck)
+ *  @version Dec 4, 2011
+ */
 public class LetterGridTest extends TestCase {
 
 	private LetterGrid grid;
@@ -41,7 +49,7 @@ public class LetterGridTest extends TestCase {
 		assertEquals(grid.getTile(1, 0).getState(), State.DOWN);
 		assertEquals(grid.getTile(0, 1).getState(), State.DOWN);
 		assertEquals(grid.getTile(1, 1).getState(), State.UP);
-		assertTilesString("abc", grid.getPath());
+		assertTilesString("acb", grid.getPath());
 
 	}
 
@@ -52,10 +60,15 @@ public class LetterGridTest extends TestCase {
 	public void testGetTile() {
 		grid.load(generateGrid("ab", "cd"));
 		assertEquals(grid.getTile(1, 0).getX(), 1);
-		assertEquals(grid.getTile(1, 0).getLetter(), 'b');
+		assertEquals(grid.getTile(1, 0).getLetter(), 'c');
 		assertEquals(grid.getTile(1, 0).getY(), 0);
 		assertEquals(grid.getTile(0, 1).getX(), 0);
 		assertEquals(grid.getTile(0, 1).getY(), 1);
+	}
+
+	public void testGetFoundWords()
+	{
+	    //TODO
 	}
 
 	private void assertTilesString(String string, ArrayList<Tile> path) {
@@ -74,4 +87,5 @@ public class LetterGridTest extends TestCase {
 		}
 		return letters;
 	}
+
 }
