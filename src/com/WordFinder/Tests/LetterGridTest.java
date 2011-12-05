@@ -7,6 +7,14 @@ import com.WordFinder.Tile.State;
 import java.util.ArrayList;
 import student.TestCase;
 
+/**
+ *  Tests the LetterGrid class
+ *
+ *  @author John Mooring (jmooring)
+ *  @author Bryan Malyn (bmalyn)
+ *  @author Christopher Buck (cmbuck)
+ *  @version Dec 4, 2011
+ */
 public class LetterGridTest extends TestCase {
 
 	private LetterGrid grid;
