@@ -7,7 +7,7 @@ import com.WordFinder.ResultsActivity;
 /**
  *  Tests the ResultsActivity class
  *
- *  @author cmbuck
+ *  @author Christopher Buck (cmbuck)
  *  @version Dec 4, 2011
  */
 public class ResultsActivityTest

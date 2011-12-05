@@ -6,7 +6,7 @@ import student.TestCase;
 /**
  *  Tests the Tile class
  *
- *  @author cmbuck
+ *  @author Christopher Buck (cmbuck)
  *  @version Dec 3, 2011
  */
 public class TileTest extends TestCase
