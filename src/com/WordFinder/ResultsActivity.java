@@ -63,7 +63,7 @@ public class ResultsActivity
 
 
     /**
-     * Place a description of your method here.
+     * Initialize the textView and ListViews with their proper data.
      */
     public void init()
     {
