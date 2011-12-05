@@ -39,23 +39,6 @@ public class ResultsActivityTest
     }
 
     /**
-     * Tests the onPause() and onResume() methods
-     */
-    public void testOnPauseAndOnResume()
-    {
-        activity.onPause();
-        activity.onResume();
-    }
-
-    /**
-     * Tests the onTitleScreenClicked() method
-     */
-    public void testOnTitleScreenClicked()
-    {
-        click(getView(Button.class, R.id.titleScreenButton));
-    }
-
-    /**
      * Tests the onPlayAgainClicked() method
      */
     public void testOnPlayAgainClicked()
