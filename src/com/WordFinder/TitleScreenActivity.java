@@ -8,10 +8,10 @@ import android.view.View;
 /**
  * The activity for the Title Screen of the WordFinder application
  *
- * @author Christopher Buck (cmbuck)
  * @author John Mooring (jmooring)
+ * @author Christopher Buck (cmbuck)
  * @author Bryan Malyn (bmalyn)
- * @version Dec 1, 2011
+ * @version 2011.11.29
  */
 public class TitleScreenActivity
     extends Activity

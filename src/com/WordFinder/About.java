@@ -10,7 +10,7 @@ import android.os.Bundle;
  * @author John Mooring (jmooring)
  * @author Christopher Buck (cmbuck)
  * @author Bryan Malyn (bmalyn)
- * @version 2011.12.29
+ * @version 2011.11.29
  */
 public class About
     extends Activity

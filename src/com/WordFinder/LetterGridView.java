@@ -21,7 +21,7 @@ import android.view.View;
  * @author John Mooring (jmooring)
  * @author Christopher Buck (cmbuck)
  * @author Bryan Malyn (bmalyn)
- * @version 2011.10.30
+ * @version 2011.11.30
  */
 public class LetterGridView
     extends View
