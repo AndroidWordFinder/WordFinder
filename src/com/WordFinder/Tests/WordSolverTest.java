@@ -18,18 +18,14 @@ public class WordSolverTest extends student.AndroidTestCase<WordFinderActivity> 
 	private WordSolver solver;
 
 	/**
-	 * <<<<<<< HEAD Calls super for WordFinderActivity ======= Constructs a new
-	 * WordSolverTest >>>>>>> branch 'refs/heads/master' of
-	 * git@github.com:AndroidWordFinder/WordFinder.git
+	 * Calls super for WordFinderActivity
 	 */
 	public WordSolverTest() {
 		super(WordFinderActivity.class);
 	}
 
 	/**
-	 * <<<<<<< HEAD Sets up tests. Called before each test. ======= Sets up the
-	 * testing environment >>>>>>> branch 'refs/heads/master' of
-	 * git@github.com:AndroidWordFinder/WordFinder.git
+	 * Sets up tests. Called before each test.
 	 */
 	public void setUp() {
 		@SuppressWarnings("unused")
@@ -39,9 +35,7 @@ public class WordSolverTest extends student.AndroidTestCase<WordFinderActivity> 
 	}
 
 	/**
-	 * <<<<<<< HEAD Tests the solve method ======= Tests the solve() method
-	 * >>>>>>> branch 'refs/heads/master' of
-	 * git@github.com:AndroidWordFinder/WordFinder.git
+	 * HEAD Tests the solve method
 	 */
 	public void testSolve() {
 		LetterGrid grid = new LetterGrid();
