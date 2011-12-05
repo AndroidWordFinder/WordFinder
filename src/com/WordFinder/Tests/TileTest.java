@@ -1,7 +1,5 @@
 package com.WordFinder.Tests;
 
-import android.graphics.Shader.TileMode;
-import android.graphics.Shader.TileMode;
 import com.WordFinder.Tile;
 import student.TestCase;
 
@@ -11,13 +9,12 @@ import student.TestCase;
  *  @author cmbuck
  *  @version Dec 3, 2011
  */
-public class TileTest
-    extends TestCase
+public class TileTest extends TestCase
 {
 
-    Tile t1;
-    Tile t2;
-    Tile t3;
+    private Tile t1;
+    private Tile t2;
+    private Tile t3;
 
 
     /**
