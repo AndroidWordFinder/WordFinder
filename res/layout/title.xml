@@ -1,30 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/backgradient"
+    android:orientation="vertical" >
 
-	<TextView android:layout_height="wrap_content"
-		android:layout_width="wrap_content" android:text="WordFinder"
-		android:id="@+id/title" android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
-		
-	<LinearLayout android:layout_height="wrap_content"
-		android:id="@+id/linearLayout1" android:layout_width="match_parent">
-		
-		<Button android:layout_height="wrap_content" android:id="@+id/start4x4Button" android:onClick="onStart4x4Clicked" android:layout_width="wrap_content" android:text="4x4"></Button>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:padding="10dp"
+        android:text="WordFinder"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40dp" >
+    </TextView>
 
-	</LinearLayout>
+    <View
+        android:id="@+id/divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/gradient"
+        android:padding="5dp" />
 
-	<LinearLayout android:layout_height="wrap_content"
-		android:id="@+id/linearLayout2" android:layout_width="match_parent">
-		<Button android:text="5x5" android:id="@+id/start5x5Button"
-			android:layout_width="wrap_content" android:layout_height="wrap_content" android:onClick="onStart5x5Clicked"></Button>
-	</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Play:"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-	<LinearLayout android:layout_height="wrap_content"
-		android:id="@+id/linearLayout3" android:layout_width="match_parent">
-		<Button android:layout_height="wrap_content" android:id="@+id/aboutButton" android:onClick="onAboutClicked" android:layout_width="wrap_content" android:text="About"></Button>
-		<Button android:layout_height="wrap_content" android:id="@+id/instructionsButton" android:onClick="onInstructionsClicked" android:layout_width="wrap_content" android:text="Instructions"></Button>
-	</LinearLayout>
+    <Button
+        android:id="@+id/start4x4Button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button"
+        android:onClick="onStart4x4Clicked"
+        android:text="4 x 4" >
+    </Button>
 
+    <Button
+        android:id="@+id/start5x5Button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button"
+        android:onClick="onStart5x5Clicked"
+        android:text="5 x 5" >
+    </Button>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/gradient"
+        android:padding="5dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" >
+
+        <Button
+            android:id="@+id/aboutButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/button"
+            android:onClick="onAboutClicked"
+            android:text="About" >
+        </Button>
+
+        <Button
+            android:id="@+id/instructionsButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/button"
+            android:onClick="onInstructionsClicked"
+            android:text="Instructions" >
+        </Button>
+    </LinearLayout>
 
 </LinearLayout>

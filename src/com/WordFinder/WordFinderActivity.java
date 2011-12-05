@@ -80,7 +80,6 @@ public class WordFinderActivity extends Activity {
 			}, 0, 1000);
 		}
 		board.setModel(grid);
-		getWindow().setBackgroundDrawableResource(R.drawable.background);
 		newBoard();
 	}
 

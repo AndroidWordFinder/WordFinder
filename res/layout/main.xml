@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@drawable/backgradient">
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -60,7 +61,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="newBoard"
-            android:text="New Board" />
+            android:text="New Board"
+            android:background="@drawable/button" />
 
         <Button
             android:id="@+id/giveUp"
@@ -68,7 +70,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="giveUp"
-            android:text="Give Up" />
+            android:text="Give Up"
+            android:background="@drawable/button"/>
     </LinearLayout>
 
 </LinearLayout>
