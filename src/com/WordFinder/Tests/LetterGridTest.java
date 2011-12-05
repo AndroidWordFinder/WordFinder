@@ -13,7 +13,7 @@ import student.TestCase;
  *  @author John Mooring (jmooring)
  *  @author Bryan Malyn (bmalyn)
  *  @author Christopher Buck (cmbuck)
- *  @version Dec 4, 2011
+ *  @version 2011.12.04
  */
 public class LetterGridTest extends TestCase {
 

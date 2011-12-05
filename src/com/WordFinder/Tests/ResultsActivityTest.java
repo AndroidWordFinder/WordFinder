@@ -7,8 +7,10 @@ import com.WordFinder.ResultsActivity;
 /**
  *  Tests the ResultsActivity class
  *
- *  @author Christopher Buck (cmbuck)
- *  @version Dec 4, 2011
+ * @author John Mooring (jmooring)
+ * @author Christopher Buck (cmbuck)
+ * @author Bryan Malyn (bmalyn)
+ * @version 2011.12.04
  */
 public class ResultsActivityTest
     extends student.AndroidTestCase<ResultsActivity>

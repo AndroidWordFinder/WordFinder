@@ -6,8 +6,10 @@ import student.TestCase;
 /**
  *  Tests the Tile class
  *
- *  @author Christopher Buck (cmbuck)
- *  @version Dec 3, 2011
+ * @author John Mooring (jmooring)
+ * @author Christopher Buck (cmbuck)
+ * @author Bryan Malyn (bmalyn)
+ * @version 2011.12.03
  */
 public class TileTest extends TestCase
 {

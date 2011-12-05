@@ -1,5 +1,12 @@
 package com.WordFinder.Tests;
-
+/**
+ * Test class for @link WordSolver.
+ *
+ * @author John Mooring (jmooring)
+ * @author Christopher Buck (cmbuck)
+ * @author Bryan Malyn (bmalyn)
+ * @version 2011.11.29
+ */
 import com.WordFinder.LetterGrid;
 import com.WordFinder.LetterGridView;
 import com.WordFinder.WordFinderActivity;

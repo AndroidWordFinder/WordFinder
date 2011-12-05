@@ -11,8 +11,10 @@ import com.WordFinder.Tile.State;
 /**
  *  Square grid of Tiles representing the game board
  *
- *  @author John Mooring (jmooring)
- *  @version 2011.1.3
+ * @author John Mooring (jmooring)
+ * @author Christopher Buck (cmbuck)
+ * @author Bryan Malyn (bmalyn)
+ * @version 2011.11.29
  */
 public class LetterGrid extends Observable {
 

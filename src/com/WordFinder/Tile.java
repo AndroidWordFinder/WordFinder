@@ -8,7 +8,9 @@ import java.util.ArrayList;
  * letters.
  *
  * @author John Mooring (jmooring)
- * @version Oct 30, 2011
+ * @author Christopher Buck (cmbuck)
+ * @author Bryan Malyn (bmalyn)
+ * @version 2011.11.29
  */
 public class Tile
 {
