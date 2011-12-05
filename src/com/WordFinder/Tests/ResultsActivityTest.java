@@ -4,6 +4,12 @@ import android.widget.Button;
 import com.WordFinder.R;
 import com.WordFinder.ResultsActivity;
 
+/**
+ *  Tests the ResultsActivity class
+ *
+ *  @author cmbuck
+ *  @version Dec 4, 2011
+ */
 public class ResultsActivityTest
     extends student.AndroidTestCase<ResultsActivity>
 {

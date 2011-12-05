@@ -58,6 +58,11 @@ public class LetterGridTest extends TestCase {
 		assertEquals(grid.getTile(0, 1).getY(), 1);
 	}
 
+	public void testGetFoundWords()
+	{
+	    //TODO
+	}
+
 	private void assertTilesString(String string, ArrayList<Tile> path) {
 		assertNotNull(path);
 		String s = "";
@@ -74,4 +79,5 @@ public class LetterGridTest extends TestCase {
 		}
 		return letters;
 	}
+
 }
