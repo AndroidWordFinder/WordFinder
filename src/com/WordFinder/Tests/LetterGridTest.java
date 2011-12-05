@@ -7,6 +7,14 @@ import com.WordFinder.Tile.State;
 import java.util.ArrayList;
 import student.TestCase;
 
+/**
+ *  Tests the LetterGrid class
+ *
+ *  @author John Mooring (jmooring)
+ *  @author Bryan Malyn (bmalyn)
+ *  @author Christopher Buck (cmbuck)
+ *  @version Dec 4, 2011
+ */
 public class LetterGridTest extends TestCase {
 
 	private LetterGrid grid;
@@ -58,6 +66,11 @@ public class LetterGridTest extends TestCase {
 		assertEquals(grid.getTile(0, 1).getY(), 1);
 	}
 
+	public void testGetFoundWords()
+	{
+	    //TODO
+	}
+
 	private void assertTilesString(String string, ArrayList<Tile> path) {
 		assertNotNull(path);
 		String s = "";
@@ -74,4 +87,5 @@ public class LetterGridTest extends TestCase {
 		}
 		return letters;
 	}
+
 }

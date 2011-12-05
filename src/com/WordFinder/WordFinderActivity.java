@@ -20,7 +20,7 @@ import android.widget.TextView;
  * Main application activity.
  *
  * @author John Mooring (jmooring)
- * @author Chris Buck (cmbuck)
+ * @author Christopher Buck (cmbuck)
  * @author Bryan Malyn (bmalyn)
  * @version 2011.10.29
  */

@@ -8,7 +8,7 @@ import android.os.Bundle;
  * project.
  *
  * @author John Mooring (jmooring)
- * @author Chris Buck (cmbuck)
+ * @author Christopher Buck (cmbuck)
  * @author Bryan Malyn (bmalyn)
  * @version 2011.12.29
  */
