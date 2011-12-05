@@ -10,6 +10,9 @@ public class WordSolverTest
     extends student.AndroidTestCase<WordFinderActivity>
 {
 
+    private WordSolver solver;
+
+
     public WordSolverTest()
     {
         super(WordFinderActivity.class);
@@ -19,20 +22,45 @@ public class WordSolverTest
     public void setUp()
     {
         LetterGridView v = getView(LetterGridView.class, com.WordFinder.R.id.letterGrid);
+        solver = WordSolver.getInstance();
     }
 
     public void testSolve()
     {
-        WordSolver solver = WordSolver.getInstance();
         LetterGrid grid = new LetterGrid();
         char[][] cgrid = { { 'a', 'n' }, { 'c', 'd' } };
         grid.load(cgrid);
         assertEquals(solver.solve(grid).size(), 4);
+        assertEquals(solver.solve(grid), solver.getWords());
+
+    }
+
+    /**
+     * Test if a word is in the dictionary.
+     */
+    public void testIsWord() {
+        assertTrue(solver.isWord("and"));
+        assertTrue(solver.isWord("cad"));
+        assertTrue(solver.isWord("can"));
+        assertTrue(solver.isWord("dan"));
+       assertFalse(solver.isWord("zasldkjzz"));
+
+    }
+
+    /**
+     * Test if a word cold be in the dictionary.
+     */
+    public void testCouldBeWord() {
+        assertTrue(solver.couldBeWord("an"));
+        assertTrue(solver.couldBeWord("ca"));
+        assertTrue(solver.couldBeWord("ca"));
+        assertTrue(solver.couldBeWord("da"));
+        assertFalse(solver.couldBeWord("zasldkjzz"));
 
     }
 
 
-    public static String ltos(long l)
+    private static String ltos(long l)
     {
         StringBuffer stb = new StringBuffer();
         int x = 0;
