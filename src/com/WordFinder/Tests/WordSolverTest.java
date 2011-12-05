@@ -39,7 +39,7 @@ public class WordSolverTest
      */
     public void setUp()
     {
-        LetterGridView v = getView(LetterGridView.class, com.WordFinder.R.id.letterGrid);
+        LetterGridView unused = getView(LetterGridView.class, com.WordFinder.R.id.letterGrid);
         //Forces the view to be created, allowing the dictionary to be loaded.
         solver = WordSolver.getInstance();
     }
