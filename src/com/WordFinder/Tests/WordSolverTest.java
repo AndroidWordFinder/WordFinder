@@ -1,9 +1,8 @@
 package com.WordFinder.Tests;
 
-import android.R;
+import com.WordFinder.LetterGrid;
 import com.WordFinder.LetterGridView;
 import com.WordFinder.WordFinderActivity;
-import com.WordFinder.LetterGrid;
 import com.WordFinder.WordSolver;
 
 public class WordSolverTest
