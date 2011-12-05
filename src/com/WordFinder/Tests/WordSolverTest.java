@@ -5,25 +5,41 @@ import com.WordFinder.LetterGridView;
 import com.WordFinder.WordFinderActivity;
 import com.WordFinder.WordSolver;
 
+/**
+ * Word Solver Test
+ * 
+ * @author John Mooring (jmooring)
+ * @author Bryan Malyn (bmalyn)
+ * @author Christopher Buck (cmbuck)
+ * @version 2011.12.3
+ */
 public class WordSolverTest
     extends student.AndroidTestCase<WordFinderActivity>
 {
 
     private WordSolver solver;
 
-
+    /**
+     * Calls super for WordFinderActivity
+     */
     public WordSolverTest()
     {
         super(WordFinderActivity.class);
     }
 
-
+    /**
+     * Sets up tests. Called before each test.
+     */
     public void setUp()
     {
         LetterGridView v = getView(LetterGridView.class, com.WordFinder.R.id.letterGrid);
+        //Forces the view to be created, allowing the dictionary to be loaded.
         solver = WordSolver.getInstance();
     }
 
+    /**
+     * Tests the solve method
+     */
     public void testSolve()
     {
         LetterGrid grid = new LetterGrid();
@@ -55,24 +71,5 @@ public class WordSolverTest
         assertTrue(solver.couldBeWord("ca"));
         assertTrue(solver.couldBeWord("da"));
         assertFalse(solver.couldBeWord("zasldkjzz"));
-
-    }
-
-
-    private static String ltos(long l)
-    {
-        StringBuffer stb = new StringBuffer();
-        int x = 0;
-        byte n;
-        while ((l & 31) == 0 && x++ <= 12)
-        {
-            l >>>= 5;
-        }
-        while ((n = (byte)(l & 31)) != 0)
-        {
-            stb.insert(0, (char)('a' + n - 1));
-            l >>>= 5;
-        }
-        return stb.toString();
     }
 }
