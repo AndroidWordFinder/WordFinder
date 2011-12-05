@@ -7,7 +7,9 @@ import com.WordFinder.TitleScreenActivity;
 /**
  *  Tests the TitleScreenActivity
  *
- *  @author cmbuck
+ *  @author Christopher Buck (cmbuck)
+ *  @author John Mooring (jmooring)
+ *  @author
  *  @version Dec 3, 2011
  */
 public class TitleScreenActivityTest

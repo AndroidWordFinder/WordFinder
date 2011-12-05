@@ -8,10 +8,16 @@ import android.os.Bundle;
  *  About activity. Shows a simple view crediting the
  *  authors and describing the project.
  *
+ *  @author John Mooring (jmooring)
+ *  @author Christopher Buck (cmbuck)
  *  @author Bryan Malyn (bmalyn)
- *  @version Oct 29, 2011
+ *  @version 2011.12.3
  */
 public class Instructions extends Activity {
+    /**
+     * Called when the activity is created
+     * @param savedInstanceState unused
+     */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.instructions);
